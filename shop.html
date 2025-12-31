@@ -1,0 +1,147 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - GemAura Jewelry</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <a href="index.html" class="brand-name">GemAura</a>
+        </div>
+        <ul class="nav-items">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html" class="active">Shop</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="navbar-actions">
+            <div class="search-bar">
+                <div class="search-input-group">
+                    <label for="searchInput" class="visually-hidden">Search:</label>
+                    <input type="text" placeholder="Search products..." id="searchInput">
+                    <span class="search-icon">&#128269;</span>
+                </div>
+            </div>
+            <a href="#" class="cart-icon" id="cart-modal-btn" title="View Cart" style="position:relative;">
+                🛒<span id="cart-count" style="position:absolute;top:-8px;right:-12px;background:#ffd700;color:#51296b;font-weight:bold;border-radius:50%;padding:2px 7px;font-size:0.95rem;min-width:22px;text-align:center;display:none;">0</span>
+            </a>
+            <div id="cart-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.35);z-index:2000;align-items:center;justify-content:center;">
+                <div style="background:#fff;max-width:400px;width:90vw;margin:60px auto;padding:24px 18px 18px 18px;border-radius:10px;box-shadow:0 4px 24px rgba(0,0,0,0.18);position:relative;">
+                    <button id="close-cart-modal" style="position:absolute;top:8px;right:12px;font-size:1.3em;background:none;border:none;cursor:pointer;">&times;</button>
+                    <h2 style="margin-top:0;">Your Cart</h2>
+                    <div id="cart-modal-items">Loading...</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <section class="shop-section">
+            <h1>Shop Jewelry</h1>
+            <div class="shop-list">
+                <div class="featured-card" data-link="classic-sterling-silver.html">
+                    <img src="images/sterling-silver.jpg" alt="Classic Sterling Silver Necklace">
+                    <div class="featured-info">
+                        <h3>Classic Sterling Silver Necklace</h3>
+                        <span>$49.99</span>
+                        <div class="star-review">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <div class="quantity-controls">
+                            <button class="qty-btn minus" type="button">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn plus" type="button">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" type="button">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="featured-card" data-link="heart-pendant.html">
+                    <img src="images/heart-pendant.jpg" alt="Heart Pendant Sterling Silver">
+                    <div class="featured-info">
+                        <h3>Heart Pendant Sterling Silver</h3>
+                        <span>$54.99</span>
+                        <div class="star-review">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <div class="quantity-controls">
+                            <button class="qty-btn minus" type="button">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn plus" type="button">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" type="button">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="featured-card" data-link="infinity-necklace.html">
+                    <img src="images/infinity.jpg" alt="Infinity Sterling Silver Necklace">
+                    <div class="featured-info">
+                        <h3>Infinity Sterling Silver Necklace</h3>
+                        <span>$59.99</span>
+                        <div class="star-review">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <div class="quantity-controls">
+                            <button class="qty-btn minus" type="button">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn plus" type="button">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" type="button">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="featured-card" data-link="gold-hoop-earrings.html">
+                    <img src="images/gold-hoop.jpg" alt="Gold Hoop Earrings">
+                    <div class="featured-info">
+                        <h3>Gold Hoop Earrings</h3>
+                        <span>$39.99</span>
+                        <div class="star-review">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <div class="quantity-controls">
+                            <button class="qty-btn minus" type="button">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn plus" type="button">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" type="button">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="featured-card" data-link="rose-gold-bracelet.html">
+                    <img src="images/rose-gold-bracelet.jpg" alt="Rose Gold Bracelet">
+                    <div class="featured-info">
+                        <h3>Rose Gold Bracelet</h3>
+                        <span>$44.99</span>
+                        <div class="star-review">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <div class="quantity-controls">
+                            <button class="qty-btn minus" type="button">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn plus" type="button">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" type="button">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    
+</body>
+    <footer class="footer">
+        <nav class="footer-nav">
+            <a href="faq.html">FAQ</a>
+            <a href="returns.html">Returns</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="careers.html">Careers</a>
+            <a href="blog.html">Blog</a>
+            <a href="store-locator.html">Store Locator</a>
+            <a href="gift-cards.html">Gift Cards</a>
+            <section class="newsletter">
+                <h2>Stay in Touch</h2>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </section>
+            <div class="footer-copy">&copy; 2025 GemAura Jewelry. All rights reserved.</div>
+        </nav>
+    </footer>
+     <script src="product.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
+
+
+
+
+    
