@@ -1,72 +1,93 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - GemAura Jewelry</title>
+    <title>Contact</title>
+     <link rel="stylesheet" 
+         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="navbar-brand">
-            <a href="index.html" class="brand-name">GemAura</a>
-        </div>
-        <ul class="nav-items">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="shop.html">Shop</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html" class="active">Contact</a></li>
-        </ul>
-        <div class="navbar-actions">
-            <div class="search-bar">
-                <div class="search-input-group">
-                    <label for="searchInput" class="visually-hidden">Search:</label>
-                    <input type="text" placeholder="Search products..." id="searchInput">
-                    <span class="search-icon">&#128269;</span>
+
+
+      <header class="header">
+        <nav class="nav">
+
+            <!-- Logo -->
+     <div class="logo">
+     <a href="index.html" class="nav-brand">GemAura</a> 
+       </div>
+
+      <!-- Navigation Links -->
+           <ul class="nav-links">
+                <li><a href="products.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact US</a></li>
+
+            </ul>
+ <div class="nav-icons">
+
+                <!-- Search Bar + Icon -->
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search products...">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
                 </div>
-            </div>
-            <a href="cart.html" class="cart-icon" title="View Cart">🛒</a>
-        </div>
-    </nav>
-    <main>
-        <section class="contact-section">
-            <h1>Contact Us</h1>
-            <div class="contact-info">
-                <p><strong>Email:</strong> support@gemaura.com</p>
-                <p><strong>Phone:</strong> (555) 123-4567</p>
-            </div>
-            <h2>Send Us a Message</h2>
-            <form class="contact-form">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
-        </section>
-    </main>
-    <footer class="footer">
-        <nav class="footer-nav">
-            <a href="faq.html">FAQ</a>
-            <a href="returns.html">Returns</a>
-            <a href="privacy.html">Privacy Policy</a>
-            <a href="careers.html">Careers</a>
-            <a href="blog.html">Blog</a>
-            <a href="store-locator.html">Store Locator</a>
-            <a href="gift-cards.html">Gift Cards</a>
-            <section class="newsletter">
-                <h2>Stay in Touch</h2>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Your email address" required>
-                    <button type="submit">Subscribe</button>
-                </form>
-            </section>
-            <div class="footer-copy">&copy; 2025 GemAura Jewelry. All rights reserved.</div>
+
+<a href="cart.html" class="cart-icon">
+     <i class="fa-solid fa-cart-shopping">
+
+     </i> <span class="cart-count">0</span> 
+    </a> 
+</div>
+               
         </nav>
-    </footer>
-    <script src="product.js"></script>
-    <script src="script.js"></script>
+    </header>
+
+    <main class="contact-page">
+
+        <section class="contact-hero">
+            <h1>Contact Us</h1>
+            <p>We’d love to hear from you about Strawberry Jewelry.</p>
+        </section>
+
+        <section class="contact-content">
+
+            <div class="contact-info">
+                <h2>Get in touch</h2>
+                <p>Email: support@strawberryjewelry.com</p>
+                <p>Instagram: @strawberryjewelry</p>
+                <p>Location: Raleigh, North Carolina</p>
+            </div>
+
+            <div class="contact-form-wrapper">
+                <h2>Send us a message</h2>
+
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input id="name" type="text" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input id="email" type="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Send Message</button>
+                </form>
+            </div>
+
+        </section>
+
+    </main>
+<script src="script.js"></script>
 </body>
 </html>
