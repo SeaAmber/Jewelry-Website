@@ -119,8 +119,7 @@ window.removeItem = function(index) {
 // 7. SEARCH FUNCTIONALITY (Existing logic preserved and cleaned)
 const searchInput = document.querySelector('.search-input');
 const searchIcon = document.querySelector('.search-icon');
-const productsList = ["necklace", "bracelet", "ring", "earrings", "brooch", "bangle", "choker", "hair jewelry"];
-
+const productsList = ["necklace", "bracelet", "ring", "earrings", "brooch", "bangle", "choker", "hair jewelry", "cufflinks", "pendant","anklet" ];
 function runSearch() {
     if (!searchInput) return;
     const userInput = searchInput.value.trim().toLowerCase();
