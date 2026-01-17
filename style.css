@@ -12,10 +12,12 @@
    RESET & BASE
    ========================================================================== */
 * {
-    margin: 0;
+    /* margin: 0; */
     padding: 0;
     box-sizing: border-box;
 }
+
+
 
 body {
     font-family: 'Outfit', sans-serif;
@@ -530,3 +532,39 @@ ul {
     .hero p { font-size: 1.1rem; }
     .search-input { width: 150px; }
 }
+
+ .individualProd {
+    max-width: 900px;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+
+.productImageSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#product-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+}
+.productInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.addToCartBtn {
+    margin-bottom: 44px;
+  }
+
+
+  

@@ -119,7 +119,85 @@ window.removeItem = function(index) {
 // 7. SEARCH FUNCTIONALITY (Existing logic preserved and cleaned)
 const searchInput = document.querySelector('.search-input');
 const searchIcon = document.querySelector('.search-icon');
-const productsList = ["necklace", "bracelet", "ring", "earrings", "brooch", "bangle", "choker", "hair jewelry", "cufflinks", "pendant","anklet" ];
+// const productsList = ["necklace", "bracelet", "ring", "earrings", "brooch", "bangle", "choker", "hair jewelry", "cufflinks", "pendant","anklet" ];
+
+
+const productsList = [
+  {
+    id: 1,
+    name: "necklace",
+    price: 25,
+    image: "assets/necklace.jpg",
+    reviews: 5
+  },
+  {
+    id: 2,
+    name: "ring",
+    price: 22,
+    image: "assets/ring.jpg",
+    reviews: 4
+  },
+  {
+    id:3,
+    name:"bracelet",
+    price: 32,
+    image: "assets/bracelet.jpg",
+    reviews: 5
+  },
+  {
+   id:4,
+    name:"bangle",
+    price: 25,
+    image: "assets/bangles.jpg",
+    reviews: 5 
+  },
+  {
+    id:5,
+    name:"choker",
+    price: 19,
+    image: "assets/choker.jpg",
+    reviews: 5 
+  },
+  {
+    id:6,
+    name:"hair jewelry",
+    price: 24,
+    image: "assets/hair-jewelry.jpg",
+    reviews: 5 
+  },
+  {
+    id:7,
+    name:"cufflinks",
+    price: 19,
+    image: "assets/cufflinks.jpg",
+    reviews: 5 
+  },
+  {
+     id:8,
+    name:"brooch",
+    price:22 ,
+    image: "assets/brooch.jpg",
+    reviews: 5 
+  },
+  {
+    id:9,
+    name:"pendant",
+    price: 17,
+    image: "assets/pendant.jpg",
+    reviews: 5 
+  },
+  {
+    id:10,
+    name:"anklet",
+    price:24 ,
+    image: "assets/anklet.jpg",
+    reviews: 4 
+  }
+]
+
+
+
+
 function runSearch() {
     if (!searchInput) return;
     const userInput = searchInput.value.trim().toLowerCase();
@@ -129,12 +207,19 @@ function runSearch() {
         return;
     }
 
-    if (productsList.includes(userInput)) {
-        location.href = `${userInput}.html`;
-    } else {
-        alert("Please enter a valid jewelry item (e.g., Necklace, Ring, Bracelet).");
-    }
+//this is where the new updated code go for the search bar and search icon to match the object structure because at first I had a string structure with the const product, but now the array is an object, so I had to refactor the code for the search bar and icon here to match the updated object array structure.
+
+const productMatch = productsList.find(item=> 
+    item.name.toLowerCase() === userInput
+);
+
+if (productMatch) {
+    location.href = `product.html?id=${productMatch.id }`
+}  else {
+    alert("Please enter a valid product like ring, necklace,or one of the products.")
 }
+}
+
 
 if (searchIcon) searchIcon.addEventListener('click', runSearch);
 if (searchInput) {
@@ -143,7 +228,10 @@ if (searchInput) {
     });
 }
 
+
+
 // 8. INITIAL LOAD
 document.addEventListener('DOMContentLoaded', () => {
     updateCartUI();
-});
+})
+
