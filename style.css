@@ -573,12 +573,17 @@ ul {
     margin-bottom: 15px;
   }
 
+
+
   
   .review-card {
+    width: 100%;    
     background: #ffc0cb;
-    padding: 14px;
+    padding: 24px 42px;
+    margin: 16px auto;
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    flex-direction: row;
   }
 
   .review-image {

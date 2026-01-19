@@ -30,10 +30,12 @@ product.reviews.forEach(review =>{
 
   reviewElement.innerHTML = `
   <div class="review-wrapper">
+  <div class="review-section">
   <img class="review-image" src="${review.image}">
    <p class="review-text">${review.text}</p>
    <div class="review-stars">${"★".repeat(review.stars)}</div>
    <p class="review-author">-${review.author}</p>
+  </div>
   </div>
   `;
   productReviewContainer.appendChild(reviewElement);
