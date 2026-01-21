@@ -9,6 +9,7 @@
     const product = productsList.find(item=> item.id == id);
 
     // 3. Fill in the placeholders
+    document.getElementById("review-wrapper")
     document.getElementById("product-image").src = product.image;
     document.getElementById("product-name").textContent = product.name;
     document.getElementById("product-price").textContent = `$${product.price}`;
@@ -23,21 +24,23 @@
 
     // 4. Insert review stars (simple example)
     // document.getElementById("product-reviews").textContent = `${product.reviews} ★`;
-product.reviews.forEach(review =>{
-  const reviewElement = document.createElement("div");
-  reviewElement.classList.add("review");
+const reviewsContainer = document.getElementById("productReviews");
 
+product.reviews.forEach(review => {
+    const reviewElement = document.createElement("div");
+    reviewElement.classList.add("review");
 
-  reviewElement.innerHTML = `
-  <div class="review-wrapper">
-  <div class="review-section">
-  <img class="review-image" src="${review.image}">
-   <p class="review-text">${review.text}</p>
-   <div class="review-stars">${"★".repeat(review.stars)}</div>
-   <p class="review-author">-${review.author}</p>
-  </div>
-  </div>
-  `;
-  productReviewContainer.appendChild(reviewElement);
-
-})
+    reviewElement.innerHTML = `
+        <div class="review-box">
+        <div class="review-wrapper">
+            <div class="review-card">
+                        <img class="review-image" src="${review.image}">
+                <p class="review-text">${review.text}</p>
+                 <div class="review-stars">${"★".repeat(review.stars)}</div>
+                <p class="review-author">- ${review.author}</p>
+            </div>
+        </div>
+        </div>        
+    `;
+   productReviewContainer.appendChild(reviewElement);
+});

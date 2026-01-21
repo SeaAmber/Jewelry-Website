@@ -131,9 +131,9 @@ const productsList = [
     averageRating: 5.0,
 description:"Elegant and timeless, this necklace adds a touch of sophistication to any look.",
      reviews:[
-        {stars:4, text:"Beautiful necklace—simple and elegant!", author:"Lena"},
-        {stars: 4, text:"Great quality and perfect for everyday wear.", author:"Carlos"},
-        {stars:4, text:"Love it! Goes with everything I own.", author:"Fatima"}
+        {stars:4, text:"Beautiful necklace—simple and elegant!", author:"Lena", image:"assets/lena.png"},
+        {stars: 4, text:"Great quality and perfect for everyday wear.", author:"Carlos", image:"assets/carlos.png"},
+        {stars:4, text:"Love it! Goes with everything I own.", author:"Fatima", image:"assets/fatima.png"}
     ]
 
 
@@ -147,9 +147,9 @@ description:"Elegant and timeless, this necklace adds a touch of sophistication 
     averageRating: 4.0,
 description:"Make a statement with our beautifully crafted ring, designed to capture attention with its elegant and timeless style.",
      reviews:[
-        {stars:4, text:"This ring is absolutely stunning! The design is elegant and it fits perfectly.", author:"Sophia"},
-        {stars: 4, text:"I bought this ring as a gift and it exceeded my expectations. The craftsmanship is excellent and it looks even better in person.", author:"Marcus"},
-        {stars:4, text:"I love how versatile this ring is. It's comfortable for daily wear and adds a touch of sophistication to any outfit.", author:"Hannah"}
+        {stars:4, text:"This ring is absolutely stunning! The design is elegant and it fits perfectly.", author:"Sophia", image:"assets/sophia.png"},
+        {stars: 4, text:"I bought this ring as a gift and it exceeded my expectations. The craftsmanship is excellent and it looks even better in person.", author:"Marcus", image:"assets/marcus.png"},
+        {stars:4, text:"I love how versatile this ring is. It's comfortable for daily wear and adds a touch of sophistication to any outfit.", author:"Hannah", image:"assets/hannah.png"}
     ]
 
 
@@ -179,9 +179,9 @@ description:"Elegant and versatile, this polished bangle adds a touch of sophist
     averageRating: 5.0,
 description:"Add a touch of timeless elegance to your look with our beautifully crafted bangle.",
      reviews:[
-        {stars:4, text:"This bangle is absolutely gorgeous! It's lightweight, comfortable.", author:"Samantha"},
-        {stars: 4, text:"I'm so impressed with the quality and design of this bangle.", author:"Nia"},
-        {stars:4, text:"A perfect gift! I bought this bangle for my sister, and she adores it.", author:"Lucas"}
+        {stars:4, text:"This bangle is absolutely gorgeous! It's lightweight, comfortable.", author:"Samantha", image:"assets/samantha.png"},
+        {stars: 4, text:"I'm so impressed with the quality and design of this bangle.", author:"Nia", image:"assets/nia.png"},
+        {stars:4, text:"A perfect gift! I bought this bangle for my sister, and she adores it.", author:"Lucas", image:"assets/lucas.png"}
     ]
 
 
@@ -195,9 +195,9 @@ description:"Add a touch of timeless elegance to your look with our beautifully 
     averageRating: 5.0,
 description:"Make a bold statement with our elegant choker.",
      reviews:[
-        {stars:4, text:"This choker is absolutely stunning! It's comfortable to wear and instantly elevates any outfit.", author:"Lila"},
-        {stars: 4, text:"I love the modern yet classic look of this choker. The quality is excellent.", author:"Jasmine"},
-        {stars:4, text:"Beautifully crafted and very stylish! I’ve worn it both alone and layered with other necklaces, and it always looks amazing", author:"Ava"}
+        {stars:4, text:"This choker is absolutely stunning! It's comfortable to wear and instantly elevates any outfit.", author:"Lila", image:"assets/lila.png"},
+        {stars: 4, text:"I love the modern yet classic look of this choker. The quality is excellent.", author:"Jasmine", image:"assets/jasmine.png"},
+        {stars:4, text:"Beautifully crafted and very stylish! I've worn it both alone and layered with other necklaces, and it always looks amazing", author:"Ava", image:"assets/ava.png"}
     ]
 
   },
@@ -209,9 +209,9 @@ description:"Make a bold statement with our elegant choker.",
     averageRating: 5.0,
 description:"Transform your look with our stunning hair jewelry, designed to make every moment unforgettable.",
      reviews:[
-        {stars:4, text:"This hair jewelry is absolutely gorgeous! It added the perfect sparkle to my updo for a wedding.", author:"Emily"},
-        {stars: 4, text:"I love how versatile and elegant these pieces are. They stay in place all day and instantly elevate my hairstyle.", author:"Maya"},
-        {stars:4, text:"Beautiful craftsmanship and stunning design! The hair jewelry made my look unique and memorable. Highly recommended for anyone wanting to stand out", author:"Zara"}
+        {stars:4, text:"This hair jewelry is absolutely gorgeous! It added the perfect sparkle to my updo for a wedding.", author:"Emily", image:"assets/emily.png"},
+        {stars: 4, text:"I love how versatile and elegant these pieces are. They stay in place all day and instantly elevate my hairstyle.", author:"Maya",image:"assets/maya.png"},
+        {stars:4, text:"Beautiful craftsmanship and stunning design! The hair jewelry made my look unique and memorable. Highly recommended for anyone wanting to stand out", author:"Zara", image:"assets/zara.png"}
     ]
 
 
@@ -224,9 +224,9 @@ description:"Transform your look with our stunning hair jewelry, designed to mak
     averageRating: 5.0,
 description:"Expertly crafted to add a refined touch to any dress shirt.",
      reviews:[
-        {stars:4, text:"These cufflinks are the perfect finishing touch for my suits.", author:"James"},
-        {stars: 4, text:"I bought these as a gift for my husband, and he absolutely loves them.", author:"Sophia"},
-        {stars:4, text:"Great value for the price! The cufflinks look very sophisticated and feel durable.", author:"Arjun"}
+        {stars:4, text:"These cufflinks are the perfect finishing touch for my suits.", author:"James", image:"assets/james.png"},
+        {stars: 4, text:"I bought these as a gift for my husband, and he absolutely loves them.", author:"Sophia", image:"assets/sophia2.png"},
+        {stars:4, text:"Great value for the price! The cufflinks look very sophisticated and feel durable.", author:"Arjun", image:"assets/arjun.png"}
     ]
 
 
@@ -240,9 +240,9 @@ description:"Expertly crafted to add a refined touch to any dress shirt.",
     averageRating: 5.0,
  description:"Add a touch of vintage charm to your ensemble with our exquisite brooch.",
      reviews:[
-        {stars:4, text:"This brooch is absolutely stunning! The craftsmanship is top-notch, and it adds the perfect finishing touch to my blazers.", author:"Olivia"},
-        {stars: 4, text:"I love how versatile this brooch is. I've worn it on my scarf and even on my handbag, and it always stands out.", author:"Priya"},
-        {stars:5, text:"A beautiful accessory that exceeded my expectations. The quality is excellent, and it arrived in lovely packaging.", author:"Daniel"}
+        {stars:4, text:"This brooch is absolutely stunning! The craftsmanship is top-notch, and it adds the perfect finishing touch to my blazers.", author:"Olivia", image:"assets/olivia.png"},
+        {stars: 4, text:"I love how versatile this brooch is. I've worn it on my scarf and even on my handbag, and it always stands out.", author:"Priya", image:"assets/priya.png"},
+        {stars:5, text:"A beautiful accessory that exceeded my expectations. The quality is excellent, and it arrived in lovely packaging.", author:"Daniel", image:"assets/daniel.png"}
     ]
 
   },
@@ -254,9 +254,9 @@ description:"Expertly crafted to add a refined touch to any dress shirt.",
     averageRating: 5.0,
     description:"Elevate your style with our elegant pendant, expertly crafted to add a touch of sophistication to any outfit.",
      reviews:[
-        {stars:5, text:"“I absolutely love this pendant! The design is elegant and versatile.", author:"Angelica"},
-        {stars: 5, text:"The quality is outstanding, and I've received so many compliments every time I wear it", author:"Carrie"},
-        {stars:5, text:"My birthday is coming up and I'm going to order another pendant.", author:"Maria"}
+        {stars:5, text:"“I absolutely love this pendant! The design is elegant and versatile.", author:"Angelica", image:"assets/angelica.png"},
+        {stars: 5, text:"The quality is outstanding, and I've received so many compliments every time I wear it", author:"Carrie", image:"assets/carrie.png"},
+        {stars:5, text:"My birthday is coming up and I'm going to order another pendant.", author:"Maria", image:"assets/maria.png"}
     ]
   },
   {
@@ -268,9 +268,9 @@ description:"Expertly crafted to add a refined touch to any dress shirt.",
     description: "An anklet that wraps around your ankle comfortably.",
 
     reviews:[
-        {stars:4, text:"This anklet is so cute, and I wear it all the time around the house and out in public.", author:"Ella"},
-        {stars: 5, text:"I ordered the anklet, and I really love this. I always love to wrap this around my anke when I get dressed up", author:"Sallie"},
-        {stars:4, text:"I am going to order another anklet for my niece. This is so cute.",author:"Mary"}
+        {stars:4, text:"This anklet is so cute, and I wear it all the time around the house and out in public.", author:"Ella", image:"assets/ella.png"},
+        {stars: 5, text:"I ordered the anklet, and I really love this. I always love to wrap this around my anke when I get dressed up", author:"Sallie", image:"assets/sallie.png"},
+        {stars:4, text:"I am going to order another anklet for my niece. This is so cute.",author:"Mary", image:"assets/mary.png"}
     ]
   }
 ]
