@@ -119,7 +119,6 @@ window.removeItem = function(index) {
 // 7. SEARCH FUNCTIONALITY (Existing logic preserved and cleaned)
 const searchInput = document.querySelector('.search-input');
 const searchIcon = document.querySelector('.search-icon');
-// const productsList = ["necklace", "bracelet", "ring", "earrings", "brooch", "bangle", "choker", "hair jewelry", "cufflinks", "pendant","anklet" ];
 
 
 const productsList = [
@@ -282,10 +281,7 @@ function runSearch() {
     if (!searchInput) return;
     const userInput = searchInput.value.trim().toLowerCase();
     
-    if (userInput === "hair jewelry") {
-        location.href = "hair-jewelry.html";
-        return;
-    }
+   
 
 //this is where the new updated code go for the search bar and search icon to match the object structure because at first I had a string structure with the const product, but now the array is an object, so I had to refactor the code for the search bar and icon here to match the updated object array structure.
 
