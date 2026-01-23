@@ -23,8 +23,7 @@
     productReviewContainer.innerHTML = "";
 
     // 4. Insert review stars (simple example)
-    // document.getElementById("product-reviews").textContent = `${product.reviews} ★`;
-const reviewsContainer = document.getElementById("productReviews");
+// const reviewsContainer = document.getElementById("productReviews");
 
 product.reviews.forEach(review => {
     const reviewElement = document.createElement("div");
@@ -44,3 +43,7 @@ product.reviews.forEach(review => {
     `;
    productReviewContainer.appendChild(reviewElement);
 });
+
+
+
+
