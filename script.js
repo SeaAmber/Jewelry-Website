@@ -7,18 +7,77 @@ const addButtons = document.querySelectorAll('.add-btn');
 const cartContainer = document.querySelector('.cart-items-container');
 const subtotalElement = document.querySelector('.cart-subtotal');
 
-function cartBadgeUpdate(cart) {
-    const itemTotals = cart.reduce((sum,item) => sum + item.quantity,0);
-    cartCountElements.forEach(el => el.textContent = itemTotals);
+const productCards = document.querySelectorAll(".product-card");
+
+//Looping through product cards(refactored version)
+
+if (productCards.length > 0 ) {
+   productCards.forEach((el,index) => {
+    const addButtons = el.querySelector(".add-btn");
+    // if (!addButtons) return;
+
+    addButtons.addEventListener("click",() => {
+
+    //   storeInCart(productsList[index].id);
+      const id = parseInt(el.dataset.id);
+      storeInCart(id);
+    
+      // Visual Feedback
+       addButtons.textContent = "Added!";
+       addButtons.style.background = "#C5A059";
+        setTimeout(() => {
+           addButtons.textContent = "Add to Cart";
+            addButtons.style.background = "";
+        }, 1000);
+    })
+ })
+
+// }
+
+
+
+
+
+
+//This is the add to cart logic
+function storeInCart(productId){
+    const product = productsList.find(product => product.id === productId);
+    const existingItem = cart.find(item => item.id === productId);
+    if (existingItem) {
+        existingItem.quantity +=1;
+    } else {
+        cart.push({
+            id: product.id,
+            name: product.name,
+            price:product.price,
+            imgSrc: product.image,
+            quantity: 1
+        });
+    }
+   localStorage.setItem('gemaura_cart', JSON.stringify(cart));
+     cartBadgeUpdate();
+     updateCartUI();
 }
 
-// 3. UPDATE CART COUNT BADGE
+
+
+
+
+
+
+// function cartBadgeUpdate() {
+    const itemTotals = cart.reduce((sum,item) => sum + item.quantity,0);
+    // cartCountElements.forEach(el => el.textContent = itemTotals);
+   cartCountElements.textContent = itemTotals
+}
+
+3. //UPDATE CART COUNT BADGE
 function updateCartUI() {
-     cartBadgeUpdate(cart);
-    localStorage.setItem('gemaura_cart', JSON.stringify(cart));
+    //  cartBadgeUpdate();
+    //  localStorage.setItem('gemaura_cart', JSON.stringify(cart));
 
     
-    // If we are on the cart page, re-render the list
+//     // If we are on the cart page, re-render the list
     if (window.location.pathname.includes('cart.html')) {
         renderCart();
     }
@@ -49,7 +108,7 @@ addButtons.forEach(button => {
         updateCartUI();
 
         
-        // Visual Feedback
+        //Visual Feedback
         button.textContent = "Added!";
         button.style.background = "#C5A059";
         setTimeout(() => {
@@ -57,7 +116,7 @@ addButtons.forEach(button => {
             button.style.background = "";
         }, 1000);
     });
-});
+ });
 
 // 5. RENDER CART ITEMS (ONLY FOR CART.HTML)
 function renderCart() {
