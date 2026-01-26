@@ -7,11 +7,16 @@ const addButtons = document.querySelectorAll('.add-btn');
 const cartContainer = document.querySelector('.cart-items-container');
 const subtotalElement = document.querySelector('.cart-subtotal');
 
+function cartBadgeUpdate(cart) {
+    const itemTotals = cart.reduce((sum,item) => sum + item.quantity,0);
+    cartCountElements.forEach(el => el.textContent = itemTotals);
+}
+
 // 3. UPDATE CART COUNT BADGE
 function updateCartUI() {
-    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-    cartCountElements.forEach(el => el.textContent = totalItems);
+     cartBadgeUpdate(cart);
     localStorage.setItem('gemaura_cart', JSON.stringify(cart));
+
     
     // If we are on the cart page, re-render the list
     if (window.location.pathname.includes('cart.html')) {
@@ -38,10 +43,11 @@ addButtons.forEach(button => {
                 price: price,
                 image: image,
                 quantity: 1
-            });
+            }); 
         }
 
         updateCartUI();
+
         
         // Visual Feedback
         button.textContent = "Added!";
@@ -80,8 +86,8 @@ function renderCart() {
                 <img src="${item.image}" alt="${item.name}" class="cart-item-image">
                 <div class="cart-item-details">
                     <h2 class="cart-item-title">${item.name}</h2>
-                    <p class="cart-item-price">$${item.price.toFixed(2)}</p>
-                    
+                   <p class="cart-item-price">$${item.price.toFixed(2)}</p>
+                     
                     <div class="cart-item-actions">
                         <button class="qty-btn" onclick="changeQty(${index}, -1)">-</button>
                         <span class="item-qty">${item.quantity}</span>

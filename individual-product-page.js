@@ -9,12 +9,14 @@
     const product = productsList.find(item=> item.id == id);
 
     // 3. Fill in the placeholders
-    document.getElementById("review-wrapper")
+    const reviewWrapper = document.getElementById("review-wrapper")
     document.getElementById("product-image").src = product.image;
     document.getElementById("product-name").textContent = product.name;
     document.getElementById("product-price").textContent = `$${product.price}`;
     document.getElementById("product-description").textContent = product.description;
     document.getElementById("average-rating").textContent = product.averageRating + "★";
+
+
     
 
    const productReviewContainer = document.getElementById("product-reviews");
@@ -42,8 +44,44 @@ product.reviews.forEach(review => {
         </div>        
     `;
    productReviewContainer.appendChild(reviewElement);
+
 });
 
+
+const addToCartBtn = document.getElementById("add-to-cart-btn");
+
+addToCartBtn.addEventListener("click", () => {
+    storeInCart(product.id)
+});
+
+
+function storeInCart(productId) {
+    console.log("adding products:", productId);
+    let cart = JSON.parse(localStorage.getItem('gemaura_cart')) || [];
+    const existingItem = cart.find(item => item.id === productId);
+
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({
+            id: product.id, 
+            name:product.name,
+            price: product.price,
+            image: product.image,
+            quantity: 1
+        });
+    }
+    localStorage.setItem('gemaura_cart', JSON.stringify(cart));
+    cartBadgeUpdate(cart);
+}
+
+
+
+function cartLoad() {
+    const saveCart = localStorage.getItem("cart");
+    const cart = JSON.parse(saveCart) || [];
+    return cart;
+}
 
 
 
