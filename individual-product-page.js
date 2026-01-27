@@ -1,6 +1,11 @@
 
 
 
+document.addEventListener("DOMContentLoaded", () => {
+
+console.log("individual-product-page.js loaded");
+
+
 
 // 1. Get the ID from the URL
     const params = new URLSearchParams(window.location.search);
@@ -50,9 +55,11 @@ product.reviews.forEach(review => {
 
  const addToCartBtn = document.getElementById("add-to-cart-btn");
 
-//  addToCartBtn.addEventListener("click", () => {
-//      storeInCart(productId)
-// });
+   addToCartBtn.addEventListener("click", () => {
+    console.log("clicked");
+     storeInCart(productId)
+ });
+
 
 
 // function storeInCart(productId) {
@@ -84,4 +91,4 @@ product.reviews.forEach(review => {
 // }
 
 
-
+})
