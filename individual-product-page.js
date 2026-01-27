@@ -8,7 +8,7 @@
 
     2. //Find the matching product in your products array
     // (Assuming your products array is available globally)
-    const product = productsList.find(item=> item.id == productId);
+    const product = productsList.find(product=> product.id === productId);
 
     // 3. Fill in the placeholders
     const reviewWrapper = document.getElementById("review-wrapper");
@@ -48,11 +48,11 @@ product.reviews.forEach(review => {
 });
 
 
-const addToCartBtn = document.getElementById("add-to-cart-btn");
+ const addToCartBtn = document.getElementById("add-to-cart-btn");
 
-addToCartBtn.addEventListener("click", () => {
-     storeInCart(productId)
-});
+//  addToCartBtn.addEventListener("click", () => {
+//      storeInCart(productId)
+// });
 
 
 // function storeInCart(productId) {

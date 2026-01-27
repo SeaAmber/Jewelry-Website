@@ -19,8 +19,10 @@ if (productCards.length > 0 ) {
     addButtons.addEventListener("click",() => {
 
     //   storeInCart(productsList[index].id);
-      const id = parseInt(el.dataset.id);
-      storeInCart(id);
+      const productId = parseInt(el.dataset.id);
+      console.log("productId:", productId); 
+      console.log("typeof productId:", typeof productId);
+      storeInCart(productId);
     
       // Visual Feedback
        addButtons.textContent = "Added!";
@@ -41,31 +43,30 @@ if (productCards.length > 0 ) {
 
 //This is the add to cart logic
 function storeInCart(productId){
-    const product = productsList.find(product => product.id === productId);
+
+
+     const product = productsList.find(product => product.id === productId);
     const existingItem = cart.find(item => item.id === productId);
     if (existingItem) {
         existingItem.quantity +=1;
     } else {
         cart.push({
-            id: product.id,
+             id: product.id,
             name: product.name,
-            price:product.price,
-            imgSrc: product.image,
+           price:product.price,
+           imgSrc: product.image,
             quantity: 1
-        });
-    }
+       });
+     }
    localStorage.setItem('gemaura_cart', JSON.stringify(cart));
-     cartBadgeUpdate();
-     updateCartUI();
+    cartBadgeUpdate();
+updateCartUI();
 }
 
 
 
 
-
-
-
-// function cartBadgeUpdate() {
+ function cartBadgeUpdate() {
     const itemTotals = cart.reduce((sum,item) => sum + item.quantity,0);
     // cartCountElements.forEach(el => el.textContent = itemTotals);
    cartCountElements.textContent = itemTotals
@@ -375,4 +376,4 @@ if (searchInput) {
 document.addEventListener('DOMContentLoaded', () => {
     updateCartUI();
 })
-
+}
