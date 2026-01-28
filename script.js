@@ -1,5 +1,4 @@
 
-console.log("script.js loaded");
 
 const productsList = [
   {
@@ -165,49 +164,17 @@ let cart = JSON.parse(localStorage.getItem('gemaura_cart')) || [];
 
 // 2. DOM ELEMENTS
 const cartCountElements = document.querySelectorAll('.cart-count');
-const addButtons = document.querySelectorAll('.add-btn');
+const addButtons = document.querySelectorAll(".add-btn");
 const cartContainer = document.querySelector('.cart-items-container');
 const subtotalElement = document.querySelector('.cart-subtotal');
 
 const productCards = document.querySelectorAll(".product-card");
 
-//Looping through product cards(refactored version)
-
-if (productCards.length > 0 ) {
-   productCards.forEach((el,index) => {
-    const addButtons = el.querySelector(".add-btn");
-     if (!addButtons) return;
-
-    addButtons.addEventListener("click",() => {
-
-      storeInCart(productsList[index].id);
-      const productId = parseInt(el.dataset.id);
-      console.log("productId:", productId); 
-      console.log("typeof productId:", typeof productId);
-      storeInCart(productId);
-    
-      // Visual Feedback
-       addButtons.textContent = "Added!";
-       addButtons.style.background = "#C5A059";
-        setTimeout(() => {
-           addButtons.textContent = "Add to Cart";
-            addButtons.style.background = "";
-        }, 1000);
-    })
- })
-
-// }
-
-
-
-
-
 
 //This is the add to cart logic
+
 function storeInCart(productId){
-
 console.log("storeInCart() was called with:", productId);
-
      const product = productsList.find(product => product.id === productId);
     const existingItem = cart.find(item => item.id === productId);
     if (existingItem) {
@@ -223,17 +190,17 @@ console.log("storeInCart() was called with:", productId);
      }
    localStorage.setItem('gemaura_cart', JSON.stringify(cart));
     cartBadgeUpdate();
-updateCartUI();
+    updateCartUI();
 }
 
 
+function cartBadgeUpdate() {
+     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0); 
+     cartCountElements.forEach(el => { el.textContent = totalItems;
+      }); 
+    }
 
 
- function cartBadgeUpdate() {
-    const itemTotals = cart.reduce((sum,item) => sum + item.quantity,0);
-    // cartCountElements.forEach(el => el.textContent = itemTotals);
-   cartCountElements.textContent = itemTotals
-}
 
 3. //UPDATE CART COUNT BADGE
 function updateCartUI() {
@@ -247,42 +214,127 @@ function updateCartUI() {
     }
 }
 
+
+addToCartButtons.forEach(button => {
+     button.addEventListener('click', () => { 
+        const productId = parseInt(button.dataset.id); 
+        storeInCart(productId); 
+    }); 
+});
+
+cartBadgeUpdate();
+
+
+//Looping through product cards(refactored version)
+
+// if (productCards.length > 0 ) {
+//    productCards.forEach((el,index) => {
+//     const addButtons = el.querySelector(".add-btn");
+//      if (!addButtons) return;
+
+//     addButtons.addEventListener("click",() => {
+
+//       storeInCart(productsList[index].id);
+//       const productId = parseInt(el.dataset.id);
+//       console.log("productId:", productId); 
+//       console.log("typeof productId:", typeof productId);
+//       storeInCart(productId);
+    
+//       // Visual Feedback
+//        addButtons.textContent = "Added!";
+//        addButtons.style.background = "#C5A059";
+//         setTimeout(() => {
+//            addButtons.textContent = "Add to Cart";
+//             addButtons.style.background = "";
+//         }, 1000);
+//     })
+//  })
+
+//  }
+
+
+
+
+
+
+//This is the add to cart logic
+// function storeInCart(productId){
+// console.log("storeInCart() was called with:", productId);
+//      const product = productsList.find(product => product.id === productId);
+//     const existingItem = cart.find(item => item.id === productId);
+//     if (existingItem) {
+//         existingItem.quantity +=1;
+//     } else {
+//         cart.push({
+//              id: product.id,
+//             name: product.name,
+//            price:product.price,
+//            imgSrc: product.image,
+//             quantity: 1
+//        });
+//      }
+//    localStorage.setItem('gemaura_cart', JSON.stringify(cart));
+//     cartBadgeUpdate();
+//     updateCartUI();
+// }
+
+
+
+
+//  function cartBadgeUpdate() {
+//     const itemTotals = cart.reduce((sum,item) => sum + item.quantity,0);
+//     // cartCountElements.forEach(el => el.textContent = itemTotals);
+//    cartCountElements.textContent = itemTotals
+// }
+
+// 3. //UPDATE CART COUNT BADGE
+// function updateCartUI() {
+//     //  cartBadgeUpdate();
+//     //  localStorage.setItem('gemaura_cart', JSON.stringify(cart));
+
+    
+// //     // If we are on the cart page, re-render the list
+//     if (window.location.pathname.includes('cart.html')) {
+//         renderCart();
+//     }
+// }
+
 // 4. ADD TO CART FUNCTIONALITY
-addButtons.forEach(button => {
-    button.addEventListener('click', (e) => {
-        const card = e.target.closest('.product-card');
-        const name = card.querySelector('.product-name').textContent;
-        const priceText = card.querySelector('.product-price').textContent;
-        const price = parseFloat(priceText.replace('$', ''));
-        const image = card.querySelector('.product-image').getAttribute('src');
+// addButtons.forEach(button => {
+//     button.addEventListener('click', (e) => {
+//         const card = e.target.closest('.product-card');
+//         const name = card.querySelector('.product-name').textContent;
+//         const priceText = card.querySelector('.product-price').textContent;
+//         const price = parseFloat(priceText.replace('$', ''));
+//         const image = card.querySelector('.product-image').getAttribute('src');
 
-        const existingItem = cart.find(item => item.name === name);
+//         const existingItem = cart.find(item => item.name === name);
 
-        if (existingItem) {
-            existingItem.quantity += 1;
-        } else {
-            cart.push({
-                name: name,
-                price: price,
-                image: image,
-                quantity: 1
-            }); 
-        }
+//         if (existingItem) {
+//             existingItem.quantity += 1;
+//         } else {
+//             cart.push({
+//                 name: name,
+//                 price: price,
+//                 image: image,
+//                 quantity: 1
+//             }); 
+//         }
 
-        updateCartUI();
+//         updateCartUI();
 
         
-        //Visual Feedback
-        button.textContent = "Added!";
-        button.style.background = "#C5A059";
-        setTimeout(() => {
-            button.textContent = "Add to Cart";
-            button.style.background = "";
-        }, 1000);
-    });
- });
+//         //Visual Feedback
+//         button.textContent = "Added!";
+//         button.style.background = "#C5A059";
+//         setTimeout(() => {
+//             button.textContent = "Add to Cart";
+//             button.style.background = "";
+//         }, 1000);
+//     });
+//  });
 
-// 5. RENDER CART ITEMS (ONLY FOR CART.HTML)
+ // 5. RENDER CART ITEMS (ONLY FOR CART.HTML)
 function renderCart() {
     if (!cartContainer) return;
 
@@ -539,4 +591,4 @@ if (searchInput) {
 document.addEventListener('DOMContentLoaded', () => {
     updateCartUI();
 })
-}
+
