@@ -213,16 +213,16 @@ function updateCartUI() {
         renderCart();
     }
 }
-
-
 addToCartButtons.forEach(button => {
      button.addEventListener('click', () => { 
-        const productId = parseInt(button.dataset.id); 
-        storeInCart(productId); 
+        const id = parseInt(button.dataset.id); 
+        storeInCart(id); 
     }); 
 });
 
-cartBadgeUpdate();
+
+
+
 
 
 //Looping through product cards(refactored version)
