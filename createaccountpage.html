@@ -1,0 +1,51 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create your Account</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+
+    <main class="auth-page2">
+      <!-- CREATE ACCOUNT SECTION -->
+    <section id="create-account-section" class="create-account-section">
+        <h2>Create Account</h2>
+
+        <form class="create-account-form">
+
+            <div class="form-group">
+                <label for="signup-name">Full Name</label>
+                <input type="text" id="signup-name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="signup-email">Email</label>
+                <input type="email" id="signup-email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="signup-password">Password</label>
+                <input type="password" id="signup-password" required>
+            </div>
+
+            <button type="submit" class="auth-btn">Create Account</button>
+
+        </form>
+
+            <p class="errorMessage"></p>
+
+         <p class="switch-auth">
+            already have an account?
+            <a href="signin.html">Sign in</a>
+        </p>
+    </section>
+    </main>
+    <script src="createaccountpage.js"></script>
+</body>
+</html>
