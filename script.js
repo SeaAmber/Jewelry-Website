@@ -243,6 +243,7 @@ addButtons.forEach(button => {
 
  // 5. RENDER CART ITEMS (ONLY FOR CART.HTML)
 function renderCart() {
+    const cartContainer = document.querySelector('.cart-items-container');
     if (!cartContainer) return;
 
     if (cart.length === 0) {
@@ -278,7 +279,7 @@ function renderCart() {
 
                     <div class="cart-item-links">
                         <button class="remove-item" onclick="removeItem(${index})">Remove</button>
-                      <button class="save-for-later-btn" data-id="${item.id}">Save for Later</button>
+                       <button class="save-for-later-btn" data-id="${item.id}">Save for Later</button>
                     </div>
                 </div>
                 <div class="item-total-price" style="font-weight:700;">$${itemTotal.toFixed(2)}</div>
@@ -349,7 +350,7 @@ function saveItemForLater(id) {
     localStorage.setItem("savedForLater", JSON.stringify(savedForLater));
 
     // 5. Re-render the cart
-     renderCart();
+    renderCart();
 }
 
 
