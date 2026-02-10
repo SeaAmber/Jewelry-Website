@@ -716,5 +716,20 @@ ul {
     font-size: 1rem;
 }
 
+.cart-item-links {
+    display: flex;
+    gap: 5rem;
+    margin-top: 5rem;
+}
+
+.remove-item {
+    font-size: 1rem;
+    cursor: pointer;
+}
+.save-for-later-btn {
+    font-size: 1rem;
+    cursor: pointer;
+}
+
 
 /* This file I'm keeping */

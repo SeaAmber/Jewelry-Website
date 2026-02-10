@@ -162,6 +162,9 @@ description:"Expertly crafted to add a refined touch to any dress shirt.",
 
 // 1. INITIALIZE CART FROM LOCALSTORAGE
 let cart = JSON.parse(localStorage.getItem('gemaura_cart')) || [];
+//saving the items the users saved for later on cart page in local storage.
+let savedForLater = JSON.parse(localStorage.getItem("savedForLater")) || [];
+
 
 // 2. DOM ELEMENTS
 const cartCountElements = document.querySelectorAll('.cart-count');
@@ -212,6 +215,7 @@ function updateCartUI() {
 //     // If we are on the cart page, re-render the list
     if (window.location.pathname.includes('cart.html')) {
         renderCart();
+        renderSavedForLater();
     }
 }
 addButtons.forEach(button => {
@@ -259,7 +263,7 @@ function renderCart() {
         const itemTotal = item.price * item.quantity;
         total += itemTotal;
 
-        cartHTML += `
+        cartHTML +=  `
             <div class="cart-item">
                 <img src="${item.image}" alt="${item.name}" class="cart-item-image">
                 <div class="cart-item-details">
@@ -274,6 +278,7 @@ function renderCart() {
 
                     <div class="cart-item-links">
                         <button class="remove-item" onclick="removeItem(${index})">Remove</button>
+                      <button class="save-for-later-btn" data-id="${item.id}">Save for Later</button>
                     </div>
                 </div>
                 <div class="item-total-price" style="font-weight:700;">$${itemTotal.toFixed(2)}</div>
@@ -284,6 +289,83 @@ function renderCart() {
     cartContainer.innerHTML = cartHTML;
     if (subtotalElement) subtotalElement.textContent = `$${total.toFixed(2)}`;
 }
+
+//Displaying Saved Items on the cart page.
+function renderSavedForLater() {
+    const savedContainer = document.querySelector('.saved-for-later-container');
+    if (!savedContainer) return;
+
+    if (savedForLater.length === 0) {
+        savedContainer.innerHTML = `
+            <p class="empty-saved-message">No items saved for later.</p>
+        `;
+        return;
+    }
+
+    let savedHTML = '';
+
+    savedForLater.forEach((item, index) => {
+        savedHTML += `
+            <div class="saved-item">
+                <img src="${item.image}" alt="${item.name}" class="saved-item-image">
+                <div class="saved-item-details">
+                    <h3>${item.name}</h3>
+                    <p>$${item.price.toFixed(2)}</p>
+
+                    <button class="move-back-btn" data-id="${item.id}">
+                        Move Back to Cart
+                    </button>
+
+                    <button class="remove-saved-btn" data-id="${item.id}">
+                        Remove
+                    </button>
+                </div>
+            </div>
+        `;
+    });
+
+    savedContainer.innerHTML = savedHTML;
+}
+
+
+
+
+
+//Function to save items for later
+
+function saveItemForLater(id) {
+    // 1. Find the item in the cart
+    const item = cart.find(product => product.id == id);
+    if (!item) return;
+
+    // 2. Add it to savedForLater
+    savedForLater.push(item);
+
+    // 3. Remove it from the cart array
+    cart = cart.filter(product => product.id != id);
+
+    // 4. Save both arrays back to localStorage
+    localStorage.setItem("gemaura_cart", JSON.stringify(cart));
+    localStorage.setItem("savedForLater", JSON.stringify(savedForLater));
+
+    // 5. Re-render the cart
+     renderCart();
+}
+
+
+
+
+
+//Adding event listener to the save later
+
+document.addEventListener("click", function(e) {
+    if (e.target.classList.contains("save-for-later-btn")) {
+        const id = e.target.dataset.id;
+        saveItemForLater(id);
+    }
+});
+
+
 
 // 6. CART ACTIONS (Global because of onclick in HTML string)
 window.changeQty = function(index, delta) {
@@ -296,8 +378,9 @@ window.changeQty = function(index, delta) {
 }
 
 window.removeItem = function(index) {
-    cart.splice(index, 1);
+     cart.splice(index, 1);
     updateCartUI();
+    updateSaveForLaterUI()
 }
 
 // 7. SEARCH FUNCTIONALITY (Existing logic preserved and cleaned)
