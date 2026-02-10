@@ -294,6 +294,7 @@ function renderCart() {
 //Displaying Saved Items on the cart page.
 function renderSavedForLater() {
     const savedContainer = document.querySelector('.saved-for-later-container');
+    console.log("saved for later")
     if (!savedContainer) return;
 
     if (savedForLater.length === 0) {
@@ -310,9 +311,11 @@ function renderSavedForLater() {
             <div class="saved-item">
                 <img src="${item.image}" alt="${item.name}" class="saved-item-image">
                 <div class="saved-item-details">
-                    <h3>${item.name}</h3>
-                    <p>$${item.price.toFixed(2)}</p>
+                    <h3 class="savedTitle">${item.name}</h3>
+                    <p class="savedPrice">$${item.price.toFixed(2)}</p>
+                    </div>
 
+                   <div class="updateBtn">
                     <button class="move-back-btn" data-id="${item.id}">
                         Move Back to Cart
                     </button>
@@ -320,6 +323,7 @@ function renderSavedForLater() {
                     <button class="remove-saved-btn" data-id="${item.id}">
                         Remove
                     </button>
+                   </div>
                 </div>
             </div>
         `;
@@ -339,18 +343,24 @@ function saveItemForLater(id) {
     const item = cart.find(product => product.id == id);
     if (!item) return;
 
-    // 2. Add it to savedForLater
-    savedForLater.push(item);
+    // 2. Add it to savedForLater only if not already there
+    if (!savedForLater.some(product => product.id == id)) {
+        savedForLater.push(item);
+    }
 
     // 3. Remove it from the cart array
     cart = cart.filter(product => product.id != id);
+ 
 
     // 4. Save both arrays back to localStorage
     localStorage.setItem("gemaura_cart", JSON.stringify(cart));
     localStorage.setItem("savedForLater", JSON.stringify(savedForLater));
 
     // 5. Re-render the cart
-    renderCart();
+    
+    updateCartUI();
+    renderSavedForLater();
+     renderCart();
 }
 
 
@@ -379,7 +389,7 @@ window.changeQty = function(index, delta) {
 }
 
 window.removeItem = function(index) {
-     cart.splice(index, 1);
+      cart.splice(index, 1);
     updateCartUI();
     updateSaveForLaterUI()
 }
