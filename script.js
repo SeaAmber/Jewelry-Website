@@ -171,6 +171,7 @@ const cartCountElements = document.querySelectorAll('.cart-count');
 const addButtons = document.querySelectorAll(".add-btn");
 const cartContainer = document.querySelector('.cart-items-container');
 const subtotalElement = document.querySelector('.cart-subtotal');
+const saveProducts = document.querySelector('.saved-for-later-container');
 
 const productCards = document.querySelectorAll(".product-card");
 
@@ -243,6 +244,8 @@ addButtons.forEach(button => {
 
  // 5. RENDER CART ITEMS (ONLY FOR CART.HTML)
 function renderCart() {
+    console.log("CART CONTENTS:", cart);
+
     const cartContainer = document.querySelector('.cart-items-container');
     if (!cartContainer) return;
 
@@ -261,8 +264,9 @@ function renderCart() {
     let total = 0;
 
     cart.forEach((item, index) => {
-        const itemTotal = item.price * item.quantity;
+         const itemTotal = item.price * item.quantity;
         total += itemTotal;
+
 
         cartHTML +=  `
             <div class="cart-item">
@@ -365,8 +369,6 @@ function saveItemForLater(id) {
 
 
 
-
-
 //Adding event listener to the save later
 
 document.addEventListener("click", function(e) {
@@ -393,6 +395,63 @@ window.removeItem = function(index) {
     updateCartUI();
     updateSaveForLaterUI()
 }
+
+//Data Flow: Users click the move back to cart button
+// 1. EVENT DELEGATION ON THE SAVED-FOR-LATER CONTAINER
+// This listener sits in shared.js because savedForLater is global state.
+// It listens for clicks on dynamically created buttons inside the saved list.
+
+if (saveProducts) {
+
+saveProducts.addEventListener("click", function(event) {
+
+    // 2. IDENTIFY WHICH BUTTON WAS CLICKED
+    // Use event.target + closest() to detect the Move Back to Cart button.
+    const moveBackBtn = event.target.closest(".move-back-btn");
+    if (!moveBackBtn) return; // If it's not the right button, exit.
+
+    // 3. GET THE ITEM ID FROM THE BUTTON
+    // The button has a data-id attribute added during rendering.
+    const itemId = Number(moveBackBtn.dataset.id);
+
+    // 4. FIND THE ITEM IN savedForLater ARRAY
+    // Use array.find() to get the actual object.
+    const itemToMove = savedForLater.find(item => item.id === itemId);
+
+    // 5. REMOVE THE ITEM FROM savedForLater
+    // Use filter() or splice() to remove it.
+    savedForLater = savedForLater.filter(item => item.id !== itemId);
+
+    // 6. ADD THE ITEM BACK INTO THE CART ARRAY
+    // Use push() to add the object back.
+    console.log("ITEM TO MOVE:", itemToMove);
+
+    cart.push(itemToMove);
+
+    // 7. UPDATE LOCAL STORAGE
+    // Save both arrays back to localStorage.
+    localStorage.setItem("savedForLater", JSON.stringify(savedForLater));
+    localStorage.setItem('gemaura_cart', JSON.stringify(cart));
+
+    // 8. RE-RENDER BOTH UIs
+    // Clear and rebuild the cart and saved-for-later sections.
+    renderCart();
+    renderSavedForLater();
+
+    // 9. UPDATE THE CART BADGE
+    // Use textContent to update the badge number.
+     cartBadgeUpdate();
+});
+}
+
+
+
+
+
+
+
+
+
 
 // 7. SEARCH FUNCTIONALITY (Existing logic preserved and cleaned)
 const searchInput = document.querySelector('.search-input');
