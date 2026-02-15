@@ -199,11 +199,28 @@ console.log("storeInCart() was called with:", productId);
 }
 
 
+
+//Refactoring the function that updates the badge
 function cartBadgeUpdate() {
-     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0); //Calculates all the items in the cart by adding the quantity of each item.
-     cartCountElements.forEach(el => { el.textContent = totalItems; // Updating the badge on the page to display the total number
-      }); 
-    }
+    const badge = document.querySelector('.cart-count');
+    console.log("badge element:", badge);
+    if (!badge) return;
+
+    const totalAll = totalQuantity(cart);
+
+    badge.textContent = totalAll;
+
+    badge.style.display = totalAll > 0 ? "flex" : "none";
+
+}
+
+//This is part of the refactoring the badge like the helper function.
+function totalQuantity() {
+    return cart
+    .filter(item => item && typeof item.quantity === "number")
+    .reduce((sum, item) => sum + item.quantity, 0 );
+}
+
 
 
 
