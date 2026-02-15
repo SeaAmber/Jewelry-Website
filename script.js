@@ -486,10 +486,16 @@ function searchSuggestion() {
     suggestionsSearch.innerHTML = "";
 
     //if the input is empty,hide the suggestions.
-    if (searchQuery === "") {
-        suggestionsSearch.style.display = "none";
+    // if (searchQuery === "") {
+    //     suggestionsSearch.style.display = "none";
+    //     return;
+    // }
+
+    if (searchQuery.length === 0) {
+        showDefaultSearch();
         return;
     }
+
 
     //Filter Products
     const filter = productsList.filter(product => product.name.toLowerCase().includes(searchQuery));
@@ -519,12 +525,53 @@ function searchSuggestion() {
     suggestionsSearch.style.display = "block";
 }
 
+
 //adding the JavaScript code for the search suggestion for the search bar
 searchInput.addEventListener("input", searchSuggestion);
 
 
 
 // Redundant productsList removed
+//Refactoring the search bar to show before users type
+searchInput.addEventListener("focus", () => {
+    if (searchInput.value.trim().length === 0) {
+     showDefaultSearch();
+    }
+})
+
+// DEFAULT SUGGESTIONS HELPER
+function showDefaultSearch() {
+  const suggestionsHtml = productsList
+    .map(product => `<div class="suggestionItems">${product.name}</div>`)
+    .join("");
+
+  suggestionsSearch.innerHTML = suggestionsHtml;
+  suggestionsSearch.style.display = "block";
+
+
+
+const suggestionItems = document.querySelectorAll(".suggestionItems");
+
+suggestionItems.forEach(item => {
+  item.addEventListener("click", () => {
+
+    const name = item.textContent;
+
+
+    // Fill the search bar
+    searchInput.value = name;
+
+    // Hide dropdown
+    suggestionsSearch.style.display = "none";
+
+    // Redirect or run your search logic
+    runSearch();
+  });
+});
+
+}
+
+
 
 
 
@@ -555,6 +602,7 @@ if (searchInput) {
         if (e.key === "Enter") runSearch();
     });
 }
+
 
 
 
