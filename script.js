@@ -440,7 +440,6 @@ saveProducts.addEventListener("click", function(event) {
     savedForLater = savedForLater.filter(item => item.id !== itemId);
 
     // 6. ADD THE ITEM BACK INTO THE CART ARRAY
-    // Use push() to add the object back.
 
     const exist = cart.find(item => item.id === itemToMove.id);
 
