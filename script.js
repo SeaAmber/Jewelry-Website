@@ -441,9 +441,14 @@ saveProducts.addEventListener("click", function(event) {
 
     // 6. ADD THE ITEM BACK INTO THE CART ARRAY
     // Use push() to add the object back.
-    console.log("ITEM TO MOVE:", itemToMove);
 
-    cart.push(itemToMove);
+    const exist = cart.find(item => item.id === itemToMove.id);
+
+    if (exist) {
+        exist.quantity += itemToMove.quantity;
+    } else {
+        cart.push(itemToMove)
+    }
 
     // 7. UPDATE LOCAL STORAGE
     // Save both arrays back to localStorage.
