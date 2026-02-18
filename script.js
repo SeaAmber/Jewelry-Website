@@ -160,10 +160,29 @@ description:"Expertly crafted to add a refined touch to any dress shirt.",
 
 
 
+
 // 1. INITIALIZE CART FROM LOCALSTORAGE
-let cart = JSON.parse(localStorage.getItem('gemaura_cart')) || [];
+ let cart = JSON.parse(localStorage.getItem('gemaura_cart')) || [];
 //saving the items the users saved for later on cart page in local storage.
 let savedForLater = JSON.parse(localStorage.getItem("savedForLater")) || [];
+
+
+function cartBadgeUpdate(cart) {
+  const badge = document.querySelector(".cart-count");
+  if (!badge) return;
+
+  const totalQuantity = cart.reduce((sum, item) => {
+    return sum + (item.quantity || 1);
+  }, 0);
+
+  badge.textContent = totalQuantity;
+}
+
+
+
+
+
+
 
 
 // 2. DOM ELEMENTS
@@ -178,25 +197,75 @@ const productCards = document.querySelectorAll(".product-card");
 
 //This is the add to cart logic
 
-function storeInCart(productId){
-console.log("storeInCart() was called with:", productId);
-     const product = productsList.find(product => product.id === productId);
-    const existingItem = cart.find(item => item.id === productId);
-    if (existingItem) {
-        existingItem.quantity +=1;
-    } else {
-        cart.push({
-             id: product.id,
-            name: product.name,
-           price:product.price,
-           image: product.image,
-            quantity: 1
-       });
-     }
-   localStorage.setItem('gemaura_cart', JSON.stringify(cart));
-    cartBadgeUpdate();
-    updateCartUI();
+// function storeInCart(productId){
+// console.log("storeInCart() was called with:", productId);
+//    // 2. Find the product in your main product list
+//      const product = productsList.find(product => product.id === productId);
+
+//     const existingItem = cart.find(item => item.id === productId);
+//     if (existingItem) {
+//         existingItem.quantity +=1;
+//     } else {
+//         cart.push({
+//              id: product.id,
+//             name: product.name,
+//            price:product.price,
+//            image: product.image,
+//             quantity: 1
+//        });
+//      }
+//    localStorage.setItem('gemaura_cart', JSON.stringify(cart));
+//     cartBadgeUpdate();
+//     updateCartUI();
+// }
+
+
+
+// ===============================
+// ADD TO CART — FINAL REFERENCE
+// ===============================
+function storeInCart(id) {
+  // 1. Normalize ID (dataset always gives strings)
+  const normalizedId = String(id);
+
+  // 2. Find the product in your main product list
+  const product = productsList.find((product) => String(product.id) === normalizedId);
+
+  // 3. SAFETY CHECK: Prevents null/undefined from entering the cart
+  if (!product) {
+    console.warn("Add to Cart Error: Product not found for id:",id);
+    return;
+  };
+
+  // 4. Check if product already exists in cart
+  const existing = cart.find((product) => String(product.id) === normalizedId);
+
+  if (existing) {
+    // 5A. If it exists, increase quantity
+    existing.quantity = (existing.quantity || 1) + 1;
+  } else {
+    // 5B. If it's new, add it with quantity 1
+    cart.push({
+      ...product,
+      quantity: 1,
+    });
+  }
+
+  // 6. Update localStorage
+  localStorage.setItem('gemaura_cart', JSON.stringify(cart));
+
+  // 7. Re-render UI
+   cartBadgeUpdate();
+   renderCart();
+
 }
+  
+
+
+
+
+
+
 
 
 
@@ -413,57 +482,134 @@ window.removeItem = function(index) {
     updateSaveForLaterUI()
 }
 
-//Data Flow: Users click the move back to cart button
-// 1. EVENT DELEGATION ON THE SAVED-FOR-LATER CONTAINER
-// This listener sits in shared.js because savedForLater is global state.
-// It listens for clicks on dynamically created buttons inside the saved list.
 
-if (saveProducts) {
 
-saveProducts.addEventListener("click", function(event) {
 
-    // 2. IDENTIFY WHICH BUTTON WAS CLICKED
-    // Use event.target + closest() to detect the Move Back to Cart button.
-    const moveBackBtn = event.target.closest(".move-back-btn");
-    if (!moveBackBtn) return; // If it's not the right button, exit.
+//Refactored Save for Later 
+const saveForLaterButtons = document.querySelectorAll(".saved-for-later-container");
 
-    // 3. GET THE ITEM ID FROM THE BUTTON
-    // The button has a data-id attribute added during rendering.
-    const itemId = Number(moveBackBtn.dataset.id);
+if (saveForLaterButtons.length > 0) {
+  saveForLaterButtons.forEach(btn => {
+    btn.addEventListener("click", (e) => {
 
-    // 4. FIND THE ITEM IN savedForLater ARRAY
-    // Use array.find() to get the actual object.
-    const itemToMove = savedForLater.find(item => item.id === itemId);
+ // 1. MOVE BACK TO CART
+     if (e.target.classList.contains("move-back-btn")) {
+        const id = e.target.dataset.id; // Find the item 
 
-    // 5. REMOVE THE ITEM FROM savedForLater
-    // Use filter() or splice() to remove it.
-    savedForLater = savedForLater.filter(item => item.id !== itemId);
 
-    // 6. ADD THE ITEM BACK INTO THE CART ARRAY
+        //Normalize ID type (HTML dataset always gives strings)
+         const normalId = String(id);
 
-    const exist = cart.find(item => item.id === itemToMove.id);
+//     // Find the item in savedForLater
+    const item = savedForLater.find((product) => string (product.id) === normalId);
 
-    if (exist) {
-        exist.quantity += itemToMove.quantity;
-    } else {
-        cart.push(itemToMove)
-    }
-
-    // 7. UPDATE LOCAL STORAGE
-    // Save both arrays back to localStorage.
-    localStorage.setItem("savedForLater", JSON.stringify(savedForLater));
-    localStorage.setItem('gemaura_cart', JSON.stringify(cart));
-
-    // 8. RE-RENDER BOTH UIs
-    // Clear and rebuild the cart and saved-for-later sections.
-    renderCart();
-    renderSavedForLater();
-
-    // 9. UPDATE THE CART BADGE
-    // Use textContent to update the badge number.
-     cartBadgeUpdate();
-});
+//    // SAFETY CHECK: Prevents null/undefined from entering the cart
+   if (!item) {
+      console.warn("Move Back Error: Item not found for id:", id); 
+      return; 
+   }
 }
+  })
+})
+
+ // Update storage 
+  localStorage.setItem("savedForLater", JSON.stringify(savedForLater));
+  localStorage.setItem('gemaura_cart', JSON.stringify(cart)); 
+//   // Re-render UI 
+   renderSavedForLater();
+    renderCart(); 
+ }
+
+
+
+ /***************************************
+ * MOVE BACK TO CART (saved → cart)
+ ***************************************/
+const savedForLaterContainer = document.querySelector(".saved-for-later-container");
+
+if (savedForLaterContainer) {
+  savedForLaterContainer.addEventListener("click", (e) => {
+
+    // Only run if the Move Back button was clicked
+    if (e.target.classList.contains("move-back-btn")) {
+
+      const id = e.target.dataset.id;
+      const normalId = String(id);
+
+      // Find the item in savedForLater
+      const item = savedForLater.find(product => String(product.id) === normalId);
+
+      // SAFETY CHECK — prevents null/undefined from entering the cart
+      if (!item) {
+        console.warn("Move Back Error: Item not found for id:", id);
+        return;
+      }
+
+      // Move saved → cart
+      const existing = cart.find(product => String(product.id) === normalId);
+       if (existing) { 
+        // Increase quantity
+         existing.quantity = (existing.quantity || 1) + 1; 
+        } else {
+             // Add new item with quantity 1 
+             item.quantity = item.quantity || 1; 
+             cart.push(item);
+             }
+
+      // Remove from savedForLater
+      savedForLater = savedForLater.filter(product => String(product.id) !== normalId);
+
+      // Save both arrays
+      localStorage.setItem('gemaura_cart', JSON.stringify(cart));
+      localStorage.setItem("savedForLater", JSON.stringify(savedForLater));
+
+      // UI updates (safe on all pages)
+      if (typeof renderCart === "function") renderCart();
+      if (typeof renderSavedForLater === "function") renderSavedForLater();
+
+      cartBadgeUpdate(cart);
+        renderCart();
+    }
+  });
+}
+
+
+
+
+
+
+
+
+/********************************************
+ * REMOVE SAVED ITEM (saved → delete)
+ ********************************************/
+const removeButton = document.querySelector(".saved-for-later-container");
+
+if (savedForLaterContainer) {
+  savedForLaterContainer.addEventListener("click", (e) => {
+
+    // Only run if the Remove button was clicked
+    if (e.target.classList.contains("remove-saved-btn")) {
+
+      const id = e.target.dataset.id;
+      const normalId = String(id);
+
+      // Remove the item from savedForLater
+      savedForLater = savedForLater.filter(product => String(product.id) !== normalId);
+
+      // Save updated list
+      localStorage.setItem("savedForLater", JSON.stringify(savedForLater));
+
+      // Update UI (safe on all pages)
+      if (typeof renderSavedForLater === "function") {
+        renderSavedForLater();
+      }
+    }
+  });
+}
+
+
+
 
 
 
@@ -484,12 +630,6 @@ function searchSuggestion() {
     const searchQuery = searchInput.value.toLowerCase();
     //clear old suggestions
     suggestionsSearch.innerHTML = "";
-
-    //if the input is empty,hide the suggestions.
-    // if (searchQuery === "") {
-    //     suggestionsSearch.style.display = "none";
-    //     return;
-    // }
 
     if (searchQuery.length === 0) {
         showDefaultSearch();
@@ -605,10 +745,21 @@ if (searchInput) {
 
 
 
+document.addEventListener("click", (event) => {
+  const clickedInsideInput = searchInput.contains(event.target);
+  const clickedInsideDropdown = suggestionsSearch.contains(event.target);
+
+  if (!clickedInsideInput && !clickedInsideDropdown) {
+    suggestionsSearch.style.display = "none";
+  }
+});
+
+
+
+
 
 // 8. INITIAL LOAD
 document.addEventListener('DOMContentLoaded', () => {
     cartBadgeUpdate(); // Ensure badge is correct on load
     updateCartUI();
 });
-
