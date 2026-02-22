@@ -1,0 +1,221 @@
+
+<!-- This file I'm keeping -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop | GemAura</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER (Shared Component) ================= -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">
+                <a href="index.html" class="nav-brand">GemAura</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html" class="active">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-icons">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search products...">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <div class="suggestionsSearch"></div>
+                </div>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-count">0</span>
+                </a>
+
+                  <a href="signin.html" class="accountIcon">
+                 <i class="fa-solid fa-heart"></i>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+
+    <!-- ================= PAGE TITLE ================= -->
+    <section class="page-header">
+        <h1>Our Products</h1>
+        <p>Explore our full jewelry collection</p>
+    </section>
+
+
+    <!-- ================= PRODUCT GRID ================= -->
+    <main>
+
+       
+          <section class="products-section">
+        <div class="products-container">
+
+            <!-- Product Card 1 -->
+             <div class="product-card" data-id="1">
+             <a href="product.html?id=1"  data-link="product.html?id=1">
+                <img src="assets/necklace.jpg" alt="Necklace" class="product-image">
+                <h3 class="product-name">Necklace</h3>
+                <p class="product-price">$25</p>
+                <div class="product-rating">★★★★★</div>
+            </a>
+         <button type="button" class="add-btn">Add to Cart</button>
+</div>
+
+
+            <!-- Product Card 2 -->
+             <div class="product-card" data-id="2">
+            <a href="product.html?id=2"  data-link="product.html?id=2">
+                <img src="assets/ring.jpg" alt="Ring" class="product-image">
+                <h3 class="product-name">Ring</h3>
+                <p class="product-price">$22</p>
+                <div class="product-rating">★★★★☆</div>
+                </a>
+            <button type="button" class="add-btn">Add to Cart</button>
+             </div>
+
+             
+
+            <!-- Product Card 3 -->
+             <div class="product-card" data-id="3">
+           <a href="product.html?id=3" data-link="product.html?id=3">
+
+                <img src="assets/bracelet.jpg" alt="Bracelet" class="product-image">
+                <h3 class="product-name">Bracelet</h3>
+                <p class="product-price">$32</p>
+                <div class="product-rating">★★★★★</div>
+           </a>
+                <button type="button" class="add-btn">Add to Cart</button>
+             </div>
+            
+              <!-- Product Card 4 -->
+               <div class="product-card" data-id="4">
+            <a href="product.html?id=4" data-link="product.html?id=4">
+               <img src="assets/bangles.jpg" alt="Bangle" class="product-image">
+                <h3 class="product-name">Bangle</h3>
+                <p class="product-price">$25</p>
+                <div class="product-rating">★★★★★</div>
+        </a>
+         <button type="button" class="add-btn">Add to Cart</button>
+        </div>
+
+
+
+              <!-- Product Card 5 -->
+        <div class="product-card" data-id="5">
+            <a href="product.html?id=5" data-link="product.html?id=5">
+
+                <img src="assets/choker.jpg" alt="Choker" class="product-image">
+                <h3 class="product-name">Choker</h3>
+                <p class="product-price">$19</p>
+                <div class="product-rating">★★★★★</div>
+            </a>
+              <button type="button" class="add-btn">Add to Cart</button>
+        </div>
+
+
+
+             <!-- Product Card 6 -->
+             <div class="product-card" data-id="6">
+            <a href="product.html?id=6" data-link="product.html?id=6">
+             <img src="assets/hair-jewelry.jpg" alt="Hair Jewelry" class="product-image">
+                <h3 class="product-name">Hair Jewelry</h3>
+                <p class="product-price">$24</p>
+                <div class="product-rating">★★★★★</div>
+            </a>
+         <button type="button" class="add-btn">Add to Cart</button>
+           </div>
+
+
+             <!-- Product Card 7-->
+              
+             <div class="product-card" data-id="7">
+            <a href="product.html?id=7" data-link="product.html?id=7">
+
+                <img src="assets/cufflinks.jpg" alt="Cufflinks" class="product-image">
+                <h3 class="product-name">Cufflinks</h3>
+                <p class="product-price">$19</p>
+                <div class="product-rating">★★★★★</div>
+            </a>
+            <button type="button" class="add-btn">Add to Cart</button>
+            </div>
+
+
+
+              <!-- Product Card 8 -->
+                  <div class="product-card" data-id="8">
+            <a href="product.html?id=8" data-link="product.html?id=8">
+            <img src="assets/brooch.jpg" alt="brooch" class="product-image">
+                <h3 class="product-name">Brooch</h3>
+                <p class="product-price">$22</p>
+                <div class="product-rating">★★★★★</div>
+            </a>
+         <button type="button" class="add-btn">Add to Cart</button>
+
+           </div>
+
+              <!-- Product Card 9 -->
+               <div class="product-card" data-id="9">
+            <a href="product.html?id=9"  data-link="product.html?id=9">
+            <img src="assets/pendant.jpg" alt="Pendant" class="product-image">
+                <h3 class="product-name">Pendant</h3>
+                <p class="product-price">$17</p>
+                <div class="product-rating">★★★★★</div>
+            </a>
+                <button type="button" class="add-btn">Add to Cart</button>
+               </div>
+
+
+              <!-- Product Card 10-->
+               <div class="product-card" data-id="10">
+            <a href="product.html?id=10" data-link="product.html?id=10">
+             <img src="assets/anklet.jpg" alt="anklet" class="product-image">
+                <h3 class="product-name">Anklet</h3>
+                <p class="product-price">$24</p>
+                <div class="product-rating">★★★★</div>
+            </a>
+                <button type="button" class="add-btn">Add to Cart</button>
+               </div>
+
+        </div>
+    </section>
+
+    </main>
+<section class="newsletter">
+        <h2>Join Our Newsletter</h2>
+        <p>Get updates on new arrivals and exclusive offers.</p>
+
+        <div class="newsletter-form">
+            <input type="email" placeholder="Enter your email" class="email-input">
+            <button class="subscribe-btn">Subscribe</button>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER (Shared Component) ================= -->
+ <footer class="footer">
+
+        <div class="footer-nav">
+            <a href="index.html">Home</a>
+            <a href="products.html">Shop</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+        <p class="footer-copy">© 2026 MyJewelry. All rights reserved.</p>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+:root {
+    --primary: #C5A059;        
+    --primary-light: #E0C58A;  
+    --secondary: #1A1A1A;      
+    --accent: #D98C8C;         
+
+    --bg-light: #FDFBF7;       
+    --bg-white: #FFFFFF;       
+    
+    --text-main: #2D2D2D;      
+    --text-muted: #666666;     
+    
+    --border: #EFE6D5;         
+}
+
+
+/* This is the file I'm keeping. */
