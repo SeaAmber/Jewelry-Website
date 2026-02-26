@@ -2,14 +2,14 @@
 //This file I'm keeping.//
 
 // Stripe publishable key (use test key pk_test_... from https://dashboard.stripe.com/apikeys)
-const STRIPE_PUBLISHABLE_KEY = "pk_test_REPLACE_WITH_YOUR_KEY";
+const STRIPE_PUBLISHABLE_KEY = "pk_test_51T2C6hD5bVR2klV1YKU8CyCjzCmK0kEuKYbYssTHOWCzR7x0BBP2AcvT8LBZXCrQwVVA4dbvL48eNFCtzItNzAI000a4BQBqdR";
 
 const productsList = [
   {
     id: 1,
     name: "necklace",
     price: 25,
-    stripePriceId: "price_REPLACE_WITH_STRIPE_PRICE_ID",
+    stripePriceId: "price_1T4FnDD5bVR2klV1hyc4v5eR",
     image: "assets/necklace.jpg",
     averageRating: 5.0,
 description:"Elegant and timeless, this necklace adds a touch of sophistication to any look.",
@@ -26,7 +26,7 @@ description:"Elegant and timeless, this necklace adds a touch of sophistication 
     id: 2,
     name: "ring",
     price: 22,
-    stripePriceId: "price_REPLACE_WITH_STRIPE_PRICE_ID",
+    stripePriceId: "price_1T4GFZD5bVR2klV1OglLsaTF",
     image: "assets/ring.jpg",
     averageRating: 4.0,
 description:"Make a statement with our beautifully crafted ring, designed to capture attention with its elegant and timeless style.",
@@ -44,10 +44,10 @@ description:"Make a statement with our beautifully crafted ring, designed to cap
     id: 3,
     name: "bracelet",
     price: 32,
-    stripePriceId: "price_REPLACE_WITH_STRIPE_PRICE_ID",
+    stripePriceId: "price_1T4GIxD5bVR2klV16CEcAJRL",
     image: "assets/bracelet.jpg",
     averageRating: 5.0,
-description:"Elegant and versatile, this polished bangle adds a touch of sophistication to any outfit.",
+description:"Elegant and versatile, this polished bracelet adds a touch of sophistication to any outfit.",
      reviews:[
         {stars:4, text:"This bracelet is absolutely lovely! The design is delicate and elegant, making it perfect for both everyday wear and special occasions.", author:"Amelia", image:"assets/amelia.png"},
         {stars: 4, text:"This bracelet adds a subtle sparkle to my wrist and matches everything in my wardrobe.", author:"Riya", image:"assets/riya.jpg"},
@@ -60,7 +60,7 @@ description:"Elegant and versatile, this polished bangle adds a touch of sophist
     id: 4,
     name: "bangle",
     price: 25,
-    stripePriceId: "price_REPLACE_WITH_STRIPE_PRICE_ID",
+    stripePriceId: "price_1T4GLsD5bVR2klV16ksspy9m",
     image: "assets/bangles.jpg",
     averageRating: 5.0,
 description:"Add a touch of timeless elegance to your look with our beautifully crafted bangle.",
@@ -77,7 +77,7 @@ description:"Add a touch of timeless elegance to your look with our beautifully 
     id: 5,
     name: "choker",
     price: 19,
-    stripePriceId: "price_REPLACE_WITH_STRIPE_PRICE_ID",
+    stripePriceId: "price_1T4GOAD5bVR2klV1e7gjm9sF",
     image: "assets/choker.jpg",
     averageRating: 5.0,
 description:"Make a bold statement with our elegant choker.",
@@ -92,7 +92,7 @@ description:"Make a bold statement with our elegant choker.",
     id: 6,
     name: "hair jewelry",
     price: 24,
-    stripePriceId: "price_REPLACE_WITH_STRIPE_PRICE_ID",
+    stripePriceId: "price_1T4Gs8D5bVR2klV15gOT1zsz",
     image: "assets/hair-jewelry.jpg",
     averageRating: 5.0,
 description:"Transform your look with our stunning hair jewelry, designed to make every moment unforgettable.",
@@ -108,7 +108,7 @@ description:"Transform your look with our stunning hair jewelry, designed to mak
     id: 7,
     name: "cufflinks",
     price: 19,
-    stripePriceId: "price_REPLACE_WITH_STRIPE_PRICE_ID",
+    stripePriceId: "price_1T4Gu6D5bVR2klV1hdLFzJ16",
     image: "assets/cufflinks.jpg",
     averageRating: 5.0,
 description:"Expertly crafted to add a refined touch to any dress shirt.",
@@ -125,7 +125,7 @@ description:"Expertly crafted to add a refined touch to any dress shirt.",
     id: 8,
     name: "brooch",
     price: 22,
-    stripePriceId: "price_REPLACE_WITH_STRIPE_PRICE_ID",
+    stripePriceId: "price_1T4Gw5D5bVR2klV1GqWwH9bp",
     image: "assets/brooch.jpg",
     averageRating: 5.0,
  description:"Add a touch of vintage charm to your ensemble with our exquisite brooch.",
@@ -140,7 +140,7 @@ description:"Expertly crafted to add a refined touch to any dress shirt.",
     id: 9,
     name: "pendant",
     price: 17,
-    stripePriceId: "price_REPLACE_WITH_STRIPE_PRICE_ID",
+    stripePriceId: "price_1T4GxVD5bVR2klV1scQa3Hyk",
     image: "assets/pendant.jpg",
     averageRating: 5.0,
     description:"Elevate your style with our elegant pendant, expertly crafted to add a touch of sophistication to any outfit.",
@@ -154,7 +154,7 @@ description:"Expertly crafted to add a refined touch to any dress shirt.",
     id: 10,
     name: "anklet",
     price: 24,
-    stripePriceId: "price_REPLACE_WITH_STRIPE_PRICE_ID",
+    stripePriceId: "price_1T4GzSD5bVR2klV1KCHkbjuo",
     image: "assets/anklet.jpg",
     averageRating: 4.0,
     description: "An anklet that wraps around your ankle comfortably.",
@@ -381,6 +381,7 @@ function renderCart() {
     if (subtotalElement) subtotalElement.textContent = `$${total.toFixed(2)}`;
 }
 
+
 // Stripe client-only checkout: redirect to Stripe Checkout with cart line items
 function getCheckoutSuccessUrl() {
   const path = window.location.pathname.replace(/\?.*$/, "") || "/cart.html";
@@ -408,7 +409,7 @@ async function proceedToStripeCheckout() {
     }
     lineItems.push({ price: priceId, quantity: item.quantity || 1 });
   }
-  if (typeof Stripe === "undefined") {
+  if (typeof stripe === "undefined") {
     alert("Stripe failed to load. Check your connection.");
     return;
   }
@@ -418,7 +419,7 @@ async function proceedToStripeCheckout() {
     );
     return;
   }
-  const stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
+  const stripe = stripe(STRIPE_PUBLISHABLE_KEY);
   const successUrl = getCheckoutSuccessUrl();
   const cancelUrl = getCheckoutCancelUrl();
   const { error } = await stripe.redirectToCheckout({
