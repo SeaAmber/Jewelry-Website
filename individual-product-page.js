@@ -13,11 +13,7 @@ console.log("individual-product-page.js loaded");
     const params = new URLSearchParams(window.location.search);
     const productId = parseInt(params.get("id"));
 
-<<<<<<< HEAD
     // 2. Find the matching product in your products array
-=======
-    2. //Find the matching product in your products array
->>>>>>> b216250f3ca446fb8efae5efa9b207d993eade88
     // (Assuming your products array is available globally)
     const product = productsList.find(product=> product.id === productId);
 
