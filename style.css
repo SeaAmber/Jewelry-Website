@@ -446,6 +446,7 @@ ul {
     margin-bottom: 1rem;
 }
 
+<<<<<<< HEAD
 .checkout-success-message {
     background: #d4edda;
     color: #155724;
@@ -455,6 +456,8 @@ ul {
     border: 1px solid #c3e6cb;
 }
 
+=======
+>>>>>>> b216250f3ca446fb8efae5efa9b207d993eade88
 .checkout-btn {
     margin-top: 1.5rem;
     padding: 1rem 3rem;

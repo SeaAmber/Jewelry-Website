@@ -180,6 +180,19 @@ description:"Expertly crafted to add a refined touch to any dress shirt.",
 let savedForLater = JSON.parse(localStorage.getItem("savedForLater")) || [];
 
 
+function cartBadgeUpdate(cart) {
+  const badge = document.querySelector(".cart-count");
+  if (!badge) return;
+
+  const totalQuantity = cart.reduce((sum, item) => {
+    return sum + (item.quantity || 1);
+  }, 0);
+
+  badge.textContent = totalQuantity;
+}
+
+
+
 
 
 
@@ -619,7 +632,7 @@ if (savedForLaterContainer) {
       if (typeof renderCart === "function") renderCart();
       if (typeof renderSavedForLater === "function") renderSavedForLater();
 
-      cartBadgeUpdate();
+      cartBadgeUpdate(cart);
         renderCart();
     }
   });
