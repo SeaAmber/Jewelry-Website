@@ -1,40 +1,81 @@
 
-// 1. SELECT THE BUTTON (The "When")
-const subscribeButton = document.getElementById('subscribe-btn'); 
 
-// 2. THE ACTION (The "What")
-const emailSubscribe = (e) => {
-    e.preventDefault();
+const form = document.getElementById("subscribe-form");
+const emailInput = document.getElementById("subscriber-email");
+const messageBox = document.getElementById("subscribe-message");
 
-    // Pull the data from your input field
-    const userEmail = document.getElementById('email-input').value;
+form.addEventListener("submit", function(e) {
+  e.preventDefault();
 
-    const templateParams = {
-        user_email: userEmail,
-        date: new Date().toLocaleDateString()
-    };
+const dateEnrolled = new Date().toLocaleString();
 
-    // CALL THE PRIMARY TEMPLATE
-    // (EmailJS handles the Auto-Reply link internally)
-  emailjs.send('service_ycdwbjg', 'template_ghq369w', templateParams)
-        .then((response) => {
-            // Added 'response' inside the brackets above ^
-            console.log('SUCCESS!', response.status, response.text);
-            alert("✨ Welcome to the collection!");
-            userEmailInput.value = ""; // Clears the box for a clean look
-        })
-        .catch((error) => {
-            // Moved this INSIDE the .catch block
-            console.log('FAILED...', error); 
-            alert("Oops! Check the console for the error.");
-        });
-};
+// const emailInput = document.getElementById("email"); 
+ const emailValidation = emailInput.value.trim();
 
-// 3. CONNECT THEM
-const subscribe = document.getElementById('subscribe-btn');
 
-if (subscribeButton) {
-    subscribeButton.addEventListener('click', emailSubscribe);
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
+if (!emailPattern.test(emailValidation)) {
+     messageBox.textContent = "Please enter a valid email address."; 
+     return; 
+    }
+
+// 2. Fake‑pattern detection
+const fakePatterns = ["asdf", "test", "fake", "qwerty"];
+const lower = emailValidation.toLowerCase();
+
+if (fakePatterns.some(word => lower.includes(word))) {
+  messageBox.textContent = "Please enter a real email address.";
+
+setTimeout(() => { messageBox.textContent = ""; 
+
+},3000)
+
+ return;
 }
 
-//  subscribeButton.addEventListener('click',emailSubscribe);
+
+// 3. Disposable‑domain detection
+const disposableDomains = [
+  "mailinator.com",
+  "tempmail.com",
+  "10minutemail.com",
+  "guerrillamail.com"
+];
+
+const domain = emailValidation.split("@")[1];
+
+if (disposableDomains.includes(domain)) {
+  messageBox.textContent = "Disposable email addresses are not allowed.";
+
+  setTimeout(() => { 
+    messageBox.textContent = "";
+ }, 3000);
+  
+  return;
+}
+
+
+
+
+
+
+
+  emailjs.send("service_ycdwbjg", "template_ghq369w", {
+    user_email: emailInput.value,
+    date: dateEnrolled
+  })
+  .then(() => {
+    messageBox.textContent = "Subscribed successfully!";
+    form.reset();
+
+
+    setTimeout(() => {
+        messageBox.textContent = "";
+    }, 3000)
+    })
+  .catch(() => {
+    messageBox.textContent = "Something went wrong. Try again.";
+  });
+});
+
+

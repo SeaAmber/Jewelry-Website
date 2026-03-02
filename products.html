@@ -190,11 +190,16 @@
 <section class="newsletter">
         <h2>Join Our Newsletter</h2>
         <p>Get updates on new arrivals and exclusive offers.</p>
+      <form id="subscribe-form"> 
+      <input type="email" 
+       id="subscriber-email" 
+       name="user_email" 
+       placeholder="Enter your email" 
+       required />
+        <button type="submit">Subscribe</button>
+     </form>
 
-        <div class="newsletter-form">
-            <input type="email" placeholder="Enter your email" class="email-input">
-            <button class="subscribe-btn">Subscribe</button>
-        </div>
+     <div id="subscribe-message"></div>
     </section>
 
     <!-- ================= FOOTER (Shared Component) ================= -->
@@ -213,6 +218,17 @@
 
 
     <!-- ================= JAVASCRIPT ================= -->
+
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+  <script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "u0yY9J8yFIuuzn_ek",
+      });
+   })();
+</script>
      <script src="emails.js"></script>
     <script src="script.js"></script>
 </body>
