@@ -49,7 +49,7 @@
 
         <section class="contact-hero">
             <h1>Contact Us</h1>
-            <p>We’d love to hear from you about GemAura Jewelry.</p>
+            <p>We'd love to hear from you about GemAura Jewelry.</p>
         </section>
 
         <section class="contact-content">
@@ -64,29 +64,30 @@
             <div class="contact-form-wrapper">
                 <h2>Send us a message</h2>
 
-                <form class="contact-form">
+                <form class="contact-form" id="contact-form" action="https://formspree.io/f/xgoljezy" method="POST">
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input id="name" type="text" name="name" required>
+                        <input id="contactName" type="text" name="name" required>
                     </div>
 
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input id="email" type="email" name="email" required>
+                        <input id="contactEmail" type="email" name="email" required>
                     </div>
 
                     <div class="form-group">
                         <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
+                        <textarea id="contactMessage" name="message" rows="5" required></textarea>
                     </div>
 
-                    <button type="submit" class="btn-primary">Send Message</button>
+                    <button type="submit" class="btn-primary" id="primaryButton">Send Message</button>
                 </form>
+             <div id="contact-message-box"></div>
             </div>
-
         </section>
 
     </main>
+    <script src="contactuspage.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
