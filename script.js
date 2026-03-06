@@ -317,7 +317,21 @@ function updateCartUI() {
         renderCart();
         renderSavedForLater();
     }
+
+
+
+
+function updateCartUI() {
+    cartBadgeUpdate();
+    localStorage.setItem('gemaura_cart', JSON.stringify(cart));
+
+    if (window.location.pathname.includes('cart.html')) {
+        renderCart();
+        renderSavedForLater();
+    }
 }
+
+
 addButtons.forEach(button => {
      button.addEventListener('click', () => { 
         const card = button.closest('.product-card');
@@ -333,11 +347,7 @@ addButtons.forEach(button => {
         }, 1000);
     }); 
 });
-
-
-
-
-
+}
 
 // 4. ADD TO CART FUNCTIONALITY - (Simplified and moved above)
 
@@ -843,3 +853,19 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 });
+
+
+//Problems in npx serve mode that need to be refactored
+//1. The individual Product page. When you type the products in search bar it goes to blank
+//image and no reviews or anything only the add to cart button shows.
+//When you click add to cart button on individual product page it doesn't add to cart.
+//2. On cart page, the quanity + and - when clicking updates the badge  number
+//, but not the quantity number.
+//3. On the cart page, when clicking remove on the products, the cart badge number disappears from the cart
+//, but the product still stays there and the quantity number stays the same 
+//in between the + and -. 
+//4. On the cart page, when clicking the proceed to checkout, it won't go to Checkout or do 
+//anything. The only time the proceed to checkout will do something is when 
+//the cart is empty and there are no products on the cart page.
+// , and then it will show an pop up or alert at the top, that says,
+//"Your cart is empty."

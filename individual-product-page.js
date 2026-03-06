@@ -17,9 +17,12 @@ console.log("individual-product-page.js loaded");
     // (Assuming your products array is available globally)
     const product = productsList.find(product=> product.id === productId);
 
+
     // 3. Fill in the placeholders
     const reviewWrapper = document.getElementById("review-wrapper");
     document.getElementById("product-image").src = product.image;
+        document.getElementById("product-image").alt = product.name;
+
     document.getElementById("product-name").textContent = product.name;
     document.getElementById("product-price").textContent = `$${product.price}`;
     document.getElementById("product-description").textContent = product.description;
@@ -32,6 +35,9 @@ console.log("individual-product-page.js loaded");
 
 
     productReviewContainer.innerHTML = "";
+
+
+
 
     // 4. Insert review stars (simple example)
 product.reviews.forEach(review => {
@@ -65,3 +71,18 @@ product.reviews.forEach(review => {
 
 
  })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
