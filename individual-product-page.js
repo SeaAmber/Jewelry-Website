@@ -17,6 +17,11 @@ console.log("individual-product-page.js loaded");
     // (Assuming your products array is available globally)
     const product = productsList.find(product=> product.id === productId);
 
+    if (!product) {
+        console.error("No product found for ID:", productId);
+        document.getElementById("product-name").textContent = "Product not found.";
+        return;
+    }
 
     // 3. Fill in the placeholders
     const reviewWrapper = document.getElementById("review-wrapper");
