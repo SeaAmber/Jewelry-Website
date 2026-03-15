@@ -26,7 +26,6 @@ console.log("individual-product-page.js loaded");
         return;
     }
 
-
     // 3. Fill in the placeholders
     const reviewWrapper = document.getElementById("review-wrapper");
     document.getElementById("product-image").src = product.image;
