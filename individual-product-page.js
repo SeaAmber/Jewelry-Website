@@ -9,21 +9,30 @@ console.log("individual-product-page.js loaded");
 
 
 
-// 1. Get the ID from the URL
+// // 1. Get the ID from the URL
     const params = new URLSearchParams(window.location.search);
     const productId = parseInt(params.get("id"));
+
+
+
 
     // 2. Find the matching product in your products array
     // (Assuming your products array is available globally)
     const product = productsList.find(product=> product.id === productId);
 
+    if (!product) {
+        console.error("No product found for ID:", productId);
+        document.getElementById("product-name").textContent = "Product not found.";
+        return;
+    }
+
 
     // 3. Fill in the placeholders
     const reviewWrapper = document.getElementById("review-wrapper");
     document.getElementById("product-image").src = product.image;
-        document.getElementById("product-image").alt = product.name;
+        // document.getElementById("product-image").alt = product.name;
 
-    document.getElementById("product-name").textContent = product.name;
+    // document.getElementById("product-name").textContent = product.name;
     document.getElementById("product-price").textContent = `$${product.price}`;
     document.getElementById("product-description").textContent = product.description;
     document.getElementById("average-rating").textContent = product.averageRating + "★";
@@ -64,15 +73,12 @@ product.reviews.forEach(review => {
  const addToCartBtn = document.getElementById("add-to-cart-btn");
 
    addToCartBtn.addEventListener("click", () => {
-    console.log("clicked");
-     storeInCart(productId)
+    storeInCart(productId);
+   
  });
 
 
-
  })
-
-
 
 
 
