@@ -1523,10 +1523,11 @@ function searchSuggestion() {
 
     //When clicking a suggestion
     div.addEventListener("click", () => { 
+
+
         searchInput.value = product.name; 
         suggestionsSearch.style.display = "none"; 
-         location.href = `product.html?id=${product.id}`;
-
+       location.href = `product.html?id=${product.id}`;
 
     });
        suggestionsSearch.appendChild(div);
@@ -1534,6 +1535,7 @@ function searchSuggestion() {
 
     suggestionsSearch.style.display = "block";
 }
+
 
 
 
@@ -1565,10 +1567,13 @@ function showDefaultSearch() {
 
 const suggestionItems = document.querySelectorAll(".suggestionItems");
 
+
+//Click Handler for the clicking on the search suggestions
 suggestionItems.forEach(item => {
   item.addEventListener("click", () => {
 
-    const name = item.textContent;
+    const name = item.textContent.trim();
+     const product = productsList.find(p => p.name === name);
 
 
     // Fill the search bar
@@ -1577,8 +1582,14 @@ suggestionItems.forEach(item => {
     // Hide dropdown
     suggestionsSearch.style.display = "none";
 
+ if (product) {
+    window.location.href = `product?id=${product.id}`;
+    return; // stop here so runSearch() doesn't override the redirect
+  }
+
     // Redirect or run your search logic
     runSearch();
+
   });
 });
 
@@ -1589,32 +1600,49 @@ suggestionItems.forEach(item => {
 
 
 
-function runSearch() {
-    if (!searchInput) return;
-    const userInput = searchInput.value.trim().toLowerCase();
-    
-   
 
-//this is where the new updated code go for the search bar and search icon to match the object structure because at first I had a string structure with the const product, but now the array is an object, so I had to refactor the code for the search bar and icon here to match the updated object array structure.
-
-const productMatch = productsList.find(item=> 
-    item.name.toLowerCase() === userInput
-);
-
-if (productMatch) {
-    location.href = `product.html?id=${productMatch.id }`
-}  else {
-    alert("Please enter a valid product like ring, necklace,or one of the products.")
-}
+if (searchIcon) {
+    searchIcon.addEventListener('click', runSearch);
 }
 
-
-if (searchIcon) searchIcon.addEventListener('click', runSearch);
 if (searchInput) {
     searchInput.addEventListener('keydown', (e) => {
         if (e.key === "Enter") runSearch();
     });
 }
+
+
+ function runSearch() {
+
+    if (!searchInput) return;
+    const userInput = searchInput.value.trim().toLowerCase();
+
+
+ 
+
+// //this is where the new updated code go for the search bar and search icon to match the object structure because at first I had a string structure with the const product, but now the array is an object, so I had to refactor the code for the search bar and icon here to match the updated object array structure.
+
+const productMatch = productsList.find(item=> 
+item.name.toLowerCase().includes(userInput)
+)
+
+ 
+
+if (productMatch) {
+  location.href = `product.html?id=${productMatch.id }`;
+return;
+}  else {
+    alert("Please enter a valid product like ring, necklace,or one of the products.")
+}
+ 
+ 
+   }
+
+
+
+
+
+
 
 
 
