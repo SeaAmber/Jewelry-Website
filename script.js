@@ -1527,7 +1527,7 @@ function searchSuggestion() {
 
         searchInput.value = product.name; 
         suggestionsSearch.style.display = "none"; 
-       location.href = `product.html?id=${product.id}`;
+       location.href = `product?id=${product.id}`;
 
     });
        suggestionsSearch.appendChild(div);
@@ -1601,15 +1601,6 @@ suggestionItems.forEach(item => {
 
 
 
-if (searchIcon) {
-    searchIcon.addEventListener('click', runSearch);
-}
-
-if (searchInput) {
-    searchInput.addEventListener('keydown', (e) => {
-        if (e.key === "Enter") runSearch();
-    });
-}
 
 
  function runSearch() {
@@ -1629,7 +1620,7 @@ item.name.toLowerCase().includes(userInput)
  
 
 if (productMatch) {
-  location.href = `product.html?id=${productMatch.id }`;
+  location.href = `product?id=${productMatch.id }`;
 return;
 }  else {
     alert("Please enter a valid product like ring, necklace,or one of the products.")
@@ -1638,6 +1629,15 @@ return;
  
    }
 
+if (searchIcon) {
+    searchIcon.addEventListener('click', runSearch);
+}
+
+if (searchInput) {
+    searchInput.addEventListener('keydown', (e) => {
+        if (e.key === "Enter") runSearch();
+    });
+}
 
 
 

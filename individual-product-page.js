@@ -29,18 +29,6 @@ if (!product) {
 
 
 
-//    if (!product) {
-//         console.error("No product found for ID:", productId);
-//         document.getElementById("product-image").textContext = "Product not found.";
-//         return;
-//     }
-
-
-
-
-
-
-
 
    // 3. Fill in the placeholders
     const reviewWrapper = document.getElementById("review-wrapper");
