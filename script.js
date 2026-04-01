@@ -2,7 +2,7 @@
 //This file I'm keeping.//
 
 // Stripe publishable key (use test key pk_test_... from https://dashboard.stripe.com/apikeys)
-const STRIPE_PUBLISHABLE_KEY = "pk_test_51T2C6hD5bVR2klV1YKU8CyCjzCmK0kEuKYbYssTHOWCzR7x0BBP2AcvT8LBZXCrQwVVA4dbvL48eNFCtzItNzAI000a4BQBqdR";
+//const STRIPE_PUBLISHABLE_KEY = "pk_test_51T2C6hD5bVR2klV1YKU8CyCjzCmK0kEuKYbYssTHOWCzR7x0BBP2AcvT8LBZXCrQwVVA4dbvL48eNFCtzItNzAI000a4BQBqdR";
 
 const productsList = [
   {
@@ -1132,58 +1132,105 @@ addButtons.forEach(button => {
 
 
 
-
-
+//Original Stripe Code
 // Stripe client-only checkout: redirect to Stripe Checkout with cart line items
-function getCheckoutSuccessUrl() {
-  const path = window.location.pathname.replace(/\?.*$/, "") || "/cart.html";
-  return window.location.origin + path + "?checkout=success";
-}
-function getCheckoutCancelUrl() {
-  const path = window.location.pathname.replace(/\?.*$/, "") || "/cart.html";
-  return window.location.origin + path;
-}
+// function getCheckoutSuccessUrl() {
+//   const path = window.location.pathname.replace(/\?.*$/, "") || "/cart.html";
+//   return window.location.origin + path + "?checkout=success";
+// }
+// function getCheckoutCancelUrl() {
+//   const path = window.location.pathname.replace(/\?.*$/, "") || "/cart.html";
+//   return window.location.origin + path;
+// }
+
+// async function proceedToStripeCheckout() {
+//   if (cart.length === 0) {
+//     alert("Your cart is empty.");
+//     return;
+//   }
+//   const placeholder = "price_REPLACE_WITH_STRIPE_PRICE_ID";
+//   const lineItems = [];
+//   for (const item of cart) {
+//     const priceId = item.stripePriceId;
+//     if (!priceId || priceId === placeholder) {
+//       alert(
+//         "Stripe is not set up yet. Please add your Stripe Price IDs to the products and your publishable key in script.js. See STRIPE_SETUP.md for steps."
+//       );
+//       return;
+//     }
+//     lineItems.push({ price: priceId, quantity: item.quantity || 1 });
+//   }
+//   if (typeof stripe === "undefined") {
+//     alert("Stripe failed to load. Check your connection.");
+//     return;
+//   }
+//   if (!STRIPE_PUBLISHABLE_KEY || STRIPE_PUBLISHABLE_KEY.includes("REPLACE")) {
+//     alert(
+//       "Please set your Stripe publishable key in script.js (STRIPE_PUBLISHABLE_KEY). See STRIPE_SETUP.md."
+//     );
+//     return;
+//   }
+//   const stripe = stripe(STRIPE_PUBLISHABLE_KEY);
+//   const successUrl = getCheckoutSuccessUrl();
+//   const cancelUrl = getCheckoutCancelUrl();
+//   const { error } = await stripe.redirectToCheckout({
+//     lineItems,
+//     mode: "payment",
+//     successUrl,
+//     cancelUrl,
+//   });
+//   if (error) {
+//     alert(error.message || "Checkout failed.");
+//   }
+// }
+
+
+
+const STRIPE_PUBLISHABLE_KEY = "pk_test_51T2C6hD5bVR2klV1YKU8CyCjzCmK0kEuKYbYssTHOWCzR7x0BBP2AcvT8LBZXCrQwVVA4dbvL48eNFCtzItNzAI000a4BQBqdR"
+const stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
 
 async function proceedToStripeCheckout() {
-  if (cart.length === 0) {
+if (!cart || cart.length === 0) {
     alert("Your cart is empty.");
     return;
   }
-  const placeholder = "price_REPLACE_WITH_STRIPE_PRICE_ID";
-  const lineItems = [];
-  for (const item of cart) {
-    const priceId = item.stripePriceId;
-    if (!priceId || priceId === placeholder) {
-      alert(
-        "Stripe is not set up yet. Please add your Stripe Price IDs to the products and your publishable key in script.js. See STRIPE_SETUP.md for steps."
-      );
-      return;
-    }
-    lineItems.push({ price: priceId, quantity: item.quantity || 1 });
-  }
-  if (typeof stripe === "undefined") {
-    alert("Stripe failed to load. Check your connection.");
-    return;
-  }
-  if (!STRIPE_PUBLISHABLE_KEY || STRIPE_PUBLISHABLE_KEY.includes("REPLACE")) {
-    alert(
-      "Please set your Stripe publishable key in script.js (STRIPE_PUBLISHABLE_KEY). See STRIPE_SETUP.md."
-    );
-    return;
-  }
-  const stripe = stripe(STRIPE_PUBLISHABLE_KEY);
-  const successUrl = getCheckoutSuccessUrl();
-  const cancelUrl = getCheckoutCancelUrl();
+
+  // B. Convert your cart into Stripe line items
+  const lineItems = cart.map(item => ({
+    price: item.stripePriceId,   // Stripe Price ID from your dashboard
+    quantity: item.quantity || 1
+  }));
+
+
+   // C. Redirect to Stripe Checkout
   const { error } = await stripe.redirectToCheckout({
     lineItems,
-    mode: "payment",
-    successUrl,
-    cancelUrl,
+    mode: "payment", // One‑time payment
+    successUrl: "https://your-production-url.com/success.html",
+    cancelUrl: "https://your-production-url.com/cancel.html"
   });
+
+  // D. Show error if Stripe fails
   if (error) {
     alert(error.message || "Checkout failed.");
-  }
-}
+  }}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //Refactoring Saved for Later and testing this change.
 
