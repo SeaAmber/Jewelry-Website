@@ -9,7 +9,8 @@ const productsList = [
     id: 1,
     name: "necklace",
     price: 25,
-    stripePriceId: "price_1T4FnDD5bVR2klV1hyc4v5eR",
+    // stripePriceId: "price_1T4FnDD5bVR2klV1hyc4v5eR",
+    paymentLink: "https://buy.stripe.com/test_6oUeVc9zV9YP8gd6YlcZa09",
     image: "assets/necklace.jpg",
     averageRating: 5.0,
 description:"Elegant and timeless, this necklace adds a touch of sophistication to any look.",
@@ -26,7 +27,8 @@ description:"Elegant and timeless, this necklace adds a touch of sophistication 
     id: 2,
     name: "ring",
     price: 22,
-    stripePriceId: "price_1T4GFZD5bVR2klV1OglLsaTF",
+    // stripePriceId: "price_1T4GFZD5bVR2klV1OglLsaTF",
+    paymentLink:"https://buy.stripe.com/test_3cI9AS7rN0of1RP96tcZa08",
     image: "assets/ring.jpg",
     averageRating: 4.0,
 description:"Make a statement with our beautifully crafted ring, designed to capture attention with its elegant and timeless style.",
@@ -44,7 +46,8 @@ description:"Make a statement with our beautifully crafted ring, designed to cap
     id: 3,
     name: "bracelet",
     price: 32,
-    stripePriceId: "price_1T4GIxD5bVR2klV16CEcAJRL",
+    // stripePriceId: "price_1T4GIxD5bVR2klV16CEcAJRL",
+    paymentLink: "https://buy.stripe.com/test_6oUdR88vRfj9541fuRcZa07",
     image: "assets/bracelet.jpg",
     averageRating: 5.0,
 description:"Elegant and versatile, this polished bracelet adds a touch of sophistication to any outfit.",
@@ -60,7 +63,8 @@ description:"Elegant and versatile, this polished bracelet adds a touch of sophi
     id: 4,
     name: "bangle",
     price: 25,
-    stripePriceId: "price_1T4GLsD5bVR2klV16ksspy9m",
+    // stripePriceId: "price_1T4GLsD5bVR2klV16ksspy9m",
+    paymentLink: "https://buy.stripe.com/test_8x23cu13p1sjbsp82pcZa06",
     image: "assets/bangles.jpg",
     averageRating: 5.0,
 description:"Add a touch of timeless elegance to your look with our beautifully crafted bangle.",
@@ -77,7 +81,8 @@ description:"Add a touch of timeless elegance to your look with our beautifully 
     id: 5,
     name: "choker",
     price: 19,
-    stripePriceId: "price_1T4GOAD5bVR2klV1e7gjm9sF",
+    // stripePriceId: "price_1T4GOAD5bVR2klV1e7gjm9sF",
+    paymentLink: "https://buy.stripe.com/test_14A7sK8vR0of0NL0zXcZa05",
     image: "assets/choker.jpg",
     averageRating: 5.0,
 description:"Make a bold statement with our elegant choker.",
@@ -92,7 +97,8 @@ description:"Make a bold statement with our elegant choker.",
     id: 6,
     name: "hair jewelry",
     price: 24,
-    stripePriceId: "price_1T4Gs8D5bVR2klV15gOT1zsz",
+    // stripePriceId: "price_1T4Gs8D5bVR2klV15gOT1zsz",
+    paymentLink: "https://buy.stripe.com/test_14AfZg27tfj97c94QdcZa04",
     image: "assets/hair-jewelry.jpg",
     averageRating: 5.0,
 description:"Transform your look with our stunning hair jewelry, designed to make every moment unforgettable.",
@@ -108,7 +114,8 @@ description:"Transform your look with our stunning hair jewelry, designed to mak
     id: 7,
     name: "cufflinks",
     price: 19,
-    stripePriceId: "price_1T4Gu6D5bVR2klV1hdLFzJ16",
+    // stripePriceId: "price_1T4Gu6D5bVR2klV1hdLFzJ16",
+    paymentLink: "https://buy.stripe.com/test_eVqfZgeUf2wncwtbeBcZa03",
     image: "assets/cufflinks.jpg",
     averageRating: 5.0,
 description:"Expertly crafted to add a refined touch to any dress shirt.",
@@ -125,7 +132,8 @@ description:"Expertly crafted to add a refined touch to any dress shirt.",
     id: 8,
     name: "brooch",
     price: 22,
-    stripePriceId: "price_1T4Gw5D5bVR2klV1GqWwH9bp",
+    // stripePriceId: "price_1T4Gw5D5bVR2klV1GqWwH9bp",
+    paymentLink: "https://buy.stripe.com/test_aFaaEWeUf9YPgMJ82pcZa02",
     image: "assets/brooch.jpg",
     averageRating: 5.0,
  description:"Add a touch of vintage charm to your ensemble with our exquisite brooch.",
@@ -140,7 +148,8 @@ description:"Expertly crafted to add a refined touch to any dress shirt.",
     id: 9,
     name: "pendant",
     price: 17,
-    stripePriceId: "price_1T4GxVD5bVR2klV1scQa3Hyk",
+    // stripePriceId: "price_1T4GxVD5bVR2klV1scQa3Hyk",
+    paymentLink: "https://buy.stripe.com/test_bJe8wO13p9YP9kh96tcZa01",
     image: "assets/pendant.jpg",
     averageRating: 5.0,
     description:"Elevate your style with our elegant pendant, expertly crafted to add a touch of sophistication to any outfit.",
@@ -154,7 +163,8 @@ description:"Expertly crafted to add a refined touch to any dress shirt.",
     id: 10,
     name: "anklet",
     price: 24,
-    stripePriceId: "price_1T4GzSD5bVR2klV1KCHkbjuo",
+    // stripePriceId: "price_1T4GzSD5bVR2klV1KCHkbjuo",
+    paymentLink: "https://buy.stripe.com/test_00weVcdQbgndaolfuRcZa00",
     image: "assets/anklet.jpg",
     averageRating: 4.0,
     description: "An anklet that wraps around your ankle comfortably.",
@@ -166,7 +176,6 @@ description:"Expertly crafted to add a refined touch to any dress shirt.",
     ]
   }
 ]
-
 
 
 
@@ -1186,34 +1195,34 @@ addButtons.forEach(button => {
 
 
 
-const STRIPE_PUBLISHABLE_KEY = "pk_test_51T2C6hD5bVR2klV1YKU8CyCjzCmK0kEuKYbYssTHOWCzR7x0BBP2AcvT8LBZXCrQwVVA4dbvL48eNFCtzItNzAI000a4BQBqdR"
-const stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
+// const STRIPE_PUBLISHABLE_KEY = "pk_test_51T2C6hD5bVR2klV1YKU8CyCjzCmK0kEuKYbYssTHOWCzR7x0BBP2AcvT8LBZXCrQwVVA4dbvL48eNFCtzItNzAI000a4BQBqdR"
+// const stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
 
-async function proceedToStripeCheckout() {
-if (!cart || cart.length === 0) {
-    alert("Your cart is empty.");
-    return;
-  }
+// async function proceedToStripeCheckout() {
+// if (!cart || cart.length === 0) {
+//     alert("Your cart is empty.");
+//     return;
+//   }
 
-  // B. Convert your cart into Stripe line items
-  const lineItems = cart.map(item => ({
-    price: item.stripePriceId,   // Stripe Price ID from your dashboard
-    quantity: item.quantity || 1
-  }));
+//   // B. Convert your cart into Stripe line items
+//   const lineItems = cart.map(item => ({
+//     price: item.stripePriceId,   // Stripe Price ID from your dashboard
+//     quantity: item.quantity || 1
+//   }));
 
 
-   // C. Redirect to Stripe Checkout
-  const { error } = await stripe.redirectToCheckout({
-    lineItems,
-    mode: "payment", // One‑time payment
-    successUrl: "https://your-production-url.com/success.html",
-    cancelUrl: "https://your-production-url.com/cancel.html"
-  });
+//    // C. Redirect to Stripe Checkout
+//   const { error } = await stripe.redirectToCheckout({
+//     lineItems,
+//     mode: "payment", // One‑time payment
+//     successUrl: "https://your-production-url.com/success.html",
+//     cancelUrl: "https://your-production-url.com/cancel.html"
+//   });
 
-  // D. Show error if Stripe fails
-  if (error) {
-    alert(error.message || "Checkout failed.");
-  }}
+//   // D. Show error if Stripe fails
+//   if (error) {
+//     alert(error.message || "Checkout failed.");
+//   }}
 
 
 
@@ -1705,27 +1714,39 @@ document.addEventListener("click", (event) => {
 
 
 
-
+//Stripe Payment Link Code
+const checkoutButton = document.querySelector(".checkout-btn")
+if (checkoutButton) {
+ checkoutButton.addEventListener("click",() => {
+    const productsList = cart[0]; 
+    window.location.href = productsList.paymentLink;
+ })
+}
+ 
 // 8. INITIAL LOAD
 document.addEventListener('DOMContentLoaded', () => {
-    cartBadgeUpdate(); // Ensure badge is correct on load
+     cartBadgeUpdate(); // Ensure badge is correct on load
     updateCartUI();
+   
 
-    // Show success message if returning from Stripe with ?checkout=success
-    const params = new URLSearchParams(window.location.search);
-    if (params.get("checkout") === "success") {
-      const msg = document.getElementById("checkout-success-message");
-      if (msg) msg.style.display = "block";
-    }
 
-    // Checkout button: redirect to Stripe (client-only checkout)
-    const checkoutBtn = document.querySelector('.checkout-btn');
-    if (checkoutBtn) {
-      checkoutBtn.addEventListener('click', function () {
-        proceedToStripeCheckout();
-      });
-    }
-});
+  //  // Show success message if returning from Stripe with ?checkout=success
+    //  const params = new URLSearchParams(window.location.search);
+    //  if (params.get("checkout") === "success") {
+    //    const msg = document.getElementById("checkout-success-message");
+    //    if (msg) msg.style.display = "block";
+    // }
+
+    // // Checkout button: redirect to Stripe (client-only checkout)
+    // const checkoutBtn = document.querySelector('.checkout-btn');
+    // if (checkoutBtn) {
+    //   checkoutBtn.addEventListener('click', function () {
+    //     proceedToStripeCheckout();
+    //   });
+    })
+
+
+
 
 
 //Problems in npx serve mode that need to be refactored
