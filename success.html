@@ -1,6 +1,25 @@
 
 
-<script>
-  localStorage.removeItem('gemaura_cart');
-  cartBadgeUpdate();
-</script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Order Successful</title>
+</head>
+<body>
+
+  <h1>Thank you for your order!</h1>
+  <p>Your cart has been cleared.</p>
+
+  <!-- Load your main JS FIRST -->
+  <script src="script.js"></script>
+
+  <!-- Then clear the cart -->
+  <script>
+    localStorage.removeItem("cart");
+    updateCartBadge();
+  </script>
+
+</body>
+</html>
