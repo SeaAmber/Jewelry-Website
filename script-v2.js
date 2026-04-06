@@ -625,7 +625,7 @@ suggestionItems.forEach(item => {
  
 
 if (productMatch) {
-  location.href = `product?id=${productMatch.id }`;
+  location.href = `product.html?id=${productMatch.id }`;
 return;
 }  else {
     alert("Please enter a valid product like ring, necklace,or one of the products.")
