@@ -848,7 +848,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
 
-  }
+  
 
 //Problems in npx serve mode that need to be refactored
 //1. The individual Product page. When you type the products in search bar it goes to blank
