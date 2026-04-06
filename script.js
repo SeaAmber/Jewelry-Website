@@ -525,12 +525,11 @@ const searchIcon = document.querySelector('.search-icon');
 const suggestionsSearch = document.querySelector('.suggestionsSearch');
 
 
-
-//adding a function for the search suggestion drop down for the search bar.
-function searchSuggestion() {
-    const searchQuery = searchInput.value.toLowerCase();
+if (searchInput && searchIcon && suggestionsSearch) {
+   function searchSuggestion() {
+   const searchQuery = searchInput.value.toLowerCase();
     //clear old suggestions
-    suggestionsSearch.innerHTML = "";
+     suggestionsSearch.innerHTML = "";
 
     if (searchQuery.length === 0) {
         showDefaultSearch();
@@ -538,9 +537,9 @@ function searchSuggestion() {
     }
 
 
-    //Filter Products
+//     //Filter Products
     const filter = productsList.filter(product => product.name.toLowerCase().includes(searchQuery));
-    //if no matches hide suggestions
+//     //if no matches hide suggestions
     if (filter.length === 0) {
         suggestionsSearch.innerHTML = "";
     suggestionsSearch.style.display = "none";
@@ -548,47 +547,30 @@ function searchSuggestion() {
     }
 
 
-    //Render Suggestions
+//     //Render Suggestions
     filter.forEach(product => {
     const div = document.createElement("div");
-    div.classList.add("suggestions"); 
+     div.classList.add("suggestions"); 
     div.textContent = product.name;
 
-    //When clicking a suggestion
-    div.addEventListener("click", () => { 
+//     //When clicking a suggestion
+     div.addEventListener("click", () => { 
 
 
-        searchInput.value = product.name; 
-        suggestionsSearch.style.display = "none"; 
-       location.href = `product?id=${product.id}`;
+       searchInput.value = product.name; 
+         suggestionsSearch.style.display = "none"; 
+        location.href = `product?id=${product.id}`;
 
     });
        suggestionsSearch.appendChild(div);
     });
 
     suggestionsSearch.style.display = "block";
-}
+ }
 
-
-
-
-//adding the JavaScript code for the search suggestion for the search bar
-searchInput.addEventListener("input", searchSuggestion);
-
-
-
-// Redundant productsList removed
-//Refactoring the search bar to show before users type
-searchInput.addEventListener("focus", () => {
-    if (searchInput.value.trim().length === 0) {
-     showDefaultSearch();
-    }
-})
-
-// DEFAULT SUGGESTIONS HELPER
 function showDefaultSearch() {
-  const suggestionsHtml = productsList
-    .map(product => `<div class="suggestionItems">${product.name}</div>`)
+   const suggestionsHtml = productsList
+     .map(product => `<div class="suggestionItems">${product.name}</div>`)
     .join("");
 
   suggestionsSearch.innerHTML = suggestionsHtml;
@@ -599,7 +581,7 @@ function showDefaultSearch() {
 const suggestionItems = document.querySelectorAll(".suggestionItems");
 
 
-//Click Handler for the clicking on the search suggestions
+// //Click Handler for the clicking on the search suggestions
 suggestionItems.forEach(item => {
   item.addEventListener("click", () => {
 
@@ -607,41 +589,37 @@ suggestionItems.forEach(item => {
      const product = productsList.find(p => p.name === name);
 
 
-    // Fill the search bar
+//     // Fill the search bar
     searchInput.value = name;
 
-    // Hide dropdown
-    suggestionsSearch.style.display = "none";
+//     // Hide dropdown
+     suggestionsSearch.style.display = "none";
 
  if (product) {
-    window.location.href = `product?id=${product.id}`;
-    return; // stop here so runSearch() doesn't override the redirect
+     window.location.href = `product?id=${product.id}`;
+     return; // stop here so runSearch() doesn't override the redirect
   }
 
-    // Redirect or run your search logic
+     // Redirect or run your search logic
     runSearch();
 
   });
-});
-
+ });
 }
 
+  function runSearch() {
 
-
-
- function runSearch() {
-
-    if (!searchInput) return;
+     if (!searchInput) return;
     const userInput = searchInput.value.trim().toLowerCase();
 
 
  
 
-// //this is where the new updated code go for the search bar and search icon to match the object structure because at first I had a string structure with the const product, but now the array is an object, so I had to refactor the code for the search bar and icon here to match the updated object array structure.
+// // //this is where the new updated code go for the search bar and search icon to match the object structure because at first I had a string structure with the const product, but now the array is an object, so I had to refactor the code for the search bar and icon here to match the updated object array structure.
 
-const productMatch = productsList.find(item=> 
-item.name.toLowerCase().includes(userInput)
-)
+ const productMatch = productsList.find(item=> 
+ item.name.toLowerCase().includes(userInput)
+ )
 
  
 
@@ -650,20 +628,25 @@ if (productMatch) {
 return;
 }  else {
     alert("Please enter a valid product like ring, necklace,or one of the products.")
-}
- 
- 
-   }
+}}
 
-if (searchIcon) {
-    searchIcon.addEventListener('click', runSearch);
-}
+ 
 
-if (searchInput) {
-    searchInput.addEventListener('keydown', (e) => {
+   // 2. EVENT LISTENERS
+    searchInput.addEventListener("input", searchSuggestion);
+
+    searchInput.addEventListener("focus", () => {
+        if (searchInput.value.trim().length === 0) {
+            showDefaultSearch();
+        }
+    });
+
+    searchInput.addEventListener("keydown", (e) => {
         if (e.key === "Enter") runSearch();
     });
-}
+
+    searchIcon.addEventListener("click", runSearch);
+  
 
 
 
@@ -676,6 +659,175 @@ document.addEventListener("click", (event) => {
     suggestionsSearch.style.display = "none";
   }
 });
+
+
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//adding a function for the search suggestion drop down for the search bar.
+// function searchSuggestion() {
+//     const searchQuery = searchInput.value.toLowerCase();
+//     //clear old suggestions
+//     suggestionsSearch.innerHTML = "";
+
+//     if (searchQuery.length === 0) {
+//         showDefaultSearch();
+//         return;
+//     }
+
+
+//     //Filter Products
+//     const filter = productsList.filter(product => product.name.toLowerCase().includes(searchQuery));
+//     //if no matches hide suggestions
+//     if (filter.length === 0) {
+//         suggestionsSearch.innerHTML = "";
+//     suggestionsSearch.style.display = "none";
+//     return;
+//     }
+
+
+//     //Render Suggestions
+//     filter.forEach(product => {
+//     const div = document.createElement("div");
+//     div.classList.add("suggestions"); 
+//     div.textContent = product.name;
+
+//     //When clicking a suggestion
+//     div.addEventListener("click", () => { 
+
+
+//         searchInput.value = product.name; 
+//         suggestionsSearch.style.display = "none"; 
+//        location.href = `product?id=${product.id}`;
+
+//     });
+//        suggestionsSearch.appendChild(div);
+//     });
+
+//     suggestionsSearch.style.display = "block";
+// }
+
+
+
+//   //adding the JavaScript code for the search suggestion for the search bar
+// searchInput.addEventListener("input", searchSuggestion);
+// // Redundant productsList removed
+// //Refactoring the search bar to show before users type
+
+
+//   searchInput.addEventListener("focus", () => {
+//     if (searchInput.value.trim().length === 0) {
+//      showDefaultSearch();
+//     }
+// })
+
+
+// // DEFAULT SUGGESTIONS HELPER
+// function showDefaultSearch() {
+//   const suggestionsHtml = productsList
+//     .map(product => `<div class="suggestionItems">${product.name}</div>`)
+//     .join("");
+
+//   suggestionsSearch.innerHTML = suggestionsHtml;
+//   suggestionsSearch.style.display = "block";
+
+
+
+// const suggestionItems = document.querySelectorAll(".suggestionItems");
+
+
+// //Click Handler for the clicking on the search suggestions
+// suggestionItems.forEach(item => {
+//   item.addEventListener("click", () => {
+
+//     const name = item.textContent.trim();
+//      const product = productsList.find(p => p.name === name);
+
+
+//     // Fill the search bar
+//     searchInput.value = name;
+
+//     // Hide dropdown
+//     suggestionsSearch.style.display = "none";
+
+//  if (product) {
+//     window.location.href = `product?id=${product.id}`;
+//     return; // stop here so runSearch() doesn't override the redirect
+//   }
+
+//     // Redirect or run your search logic
+//     runSearch();
+
+//   });
+// });
+
+// }
+
+
+
+
+
+
+//  function runSearch() {
+
+//     if (!searchInput) return;
+//     const userInput = searchInput.value.trim().toLowerCase();
+
+
+ 
+
+// // //this is where the new updated code go for the search bar and search icon to match the object structure because at first I had a string structure with the const product, but now the array is an object, so I had to refactor the code for the search bar and icon here to match the updated object array structure.
+
+// const productMatch = productsList.find(item=> 
+// item.name.toLowerCase().includes(userInput)
+// )
+
+ 
+
+// if (productMatch) {
+//   location.href = `product?id=${productMatch.id }`;
+// return;
+// }  else {
+//     alert("Please enter a valid product like ring, necklace,or one of the products.")
+// }
+ 
+ 
+//    }
+
+// if (searchIcon) {
+//     searchIcon.addEventListener('click', runSearch);
+// }
+
+// if (searchInput) {
+//     searchInput.addEventListener('keydown', (e) => {
+//         if (e.key === "Enter") runSearch();
+//     });
+// }
+
+
+
+
+// document.addEventListener("click", (event) => {
+//   const clickedInsideInput = searchInput.contains(event.target);
+//   const clickedInsideDropdown = suggestionsSearch.contains(event.target);
+
+//   if (!clickedInsideInput && !clickedInsideDropdown) {
+//     suggestionsSearch.style.display = "none";
+//   }
+// });
 
 
 
@@ -691,13 +843,12 @@ if (checkoutButton) {
  
 // 8. INITIAL LOAD
 document.addEventListener('DOMContentLoaded', () => {
-     cartBadgeUpdate(); // Ensure badge is correct on load
+   cartBadgeUpdate(); // Ensure badge is correct on load
     updateCartUI();
     })
 
 
-
-
+  }
 
 //Problems in npx serve mode that need to be refactored
 //1. The individual Product page. When you type the products in search bar it goes to blank
