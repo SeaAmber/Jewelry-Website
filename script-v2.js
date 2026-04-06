@@ -560,7 +560,7 @@ if (searchInput && searchIcon && suggestionsSearch) {
 
        searchInput.value = product.name; 
          suggestionsSearch.style.display = "none"; 
-        location.href = `product?id=${product.id}`;
+        location.href = `product.html?id=${product.id}`;
 
     });
        suggestionsSearch.appendChild(div);
@@ -597,7 +597,7 @@ suggestionItems.forEach(item => {
      suggestionsSearch.style.display = "none";
 
  if (product) {
-     window.location.href = `product?id=${product.id}`;
+     window.location.href = `product.html?id=${product.id}`;
      return; // stop here so runSearch() doesn't override the redirect
   }
 
