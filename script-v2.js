@@ -1,4 +1,5 @@
 
+console.log("SUCCESS PAGE: localStorage cart =", localStorage.getItem('gemaura_cart'));
 
 const productsList = [
   {
@@ -846,7 +847,7 @@ document.addEventListener('DOMContentLoaded', () => {
    cartBadgeUpdate(); // Ensure badge is correct on load
     updateCartUI();
     })
-
+  
 
   
 

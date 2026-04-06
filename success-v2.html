@@ -11,14 +11,16 @@
   <h1>Thank you for your order!</h1>
   <p>Your cart has been cleared.</p>
 
-  <!-- Load your main JS FIRST -->
-  <script src="script-v2.js"></script>
-
-  <!-- Then clear the cart -->
+<!-- Then clear the cart -->
   <script>
     localStorage.removeItem('gemaura_cart');
     cartBadgeUpdate();
   </script>
+
+  <!-- Load your main JS FIRST -->
+  <script src="script-v2.js"></script>
+
+  
 
 </body>
 </html>
